@@ -1,0 +1,89 @@
+.section-header {
+  background-color: #3C2B63;
+  color: white;
+  margin: 2vh 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 5vh;
+  line-height: 5vh;
+  font-size: 1vw;
+  letter-spacing: 3px; }
+
+.image {
+  height: 40vh;
+  background-size: cover;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 2vh; }
+
+.image-stadium {
+  background-image: url("../images/stadium2.jpg"); }
+
+.image-tennis {
+  background-image: url("../images/tenis2.jpg"); }
+
+.image-beach {
+  background-image: url("../images/beach.jpg"); }
+
+.no-tournaments .encouragement {
+  height: 40vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  background-color: #3C2B63;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  letter-spacing: 3px;
+  font-size: 1vw; }
+  .no-tournaments .encouragement .icon {
+    font-size: 10vh;
+    margin-bottom: 2vh; }
+
+.tournaments-wrapper .tournament, .tournaments-wrapper-full .tournament {
+  height: 12vh;
+  cursor: pointer;
+  background-color: #3C2B63;
+  color: white;
+  letter-spacing: 3px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 2vh; }
+  .tournaments-wrapper .tournament .tournament-top-section, .tournaments-wrapper-full .tournament .tournament-top-section {
+    height: 6vh;
+    border-bottom: 2px solid #9E4CAD;
+    display: flex;
+    align-items: center;
+    font-size: 1.5vw; }
+    .tournaments-wrapper .tournament .tournament-top-section .tournament-title, .tournaments-wrapper-full .tournament .tournament-top-section .tournament-title {
+      margin-left: 1vw;
+      width: 85%; }
+    .tournaments-wrapper .tournament .tournament-top-section .discipline-icon, .tournaments-wrapper-full .tournament .tournament-top-section .discipline-icon {
+      width: 4vh;
+      height: 4vh;
+      margin-right: 20px; }
+    .tournaments-wrapper .tournament .tournament-top-section .volleyball-icon, .tournaments-wrapper-full .tournament .tournament-top-section .volleyball-icon {
+      background-image: url("../images/volleyball-icon.png");
+      background-size: cover; }
+  .tournaments-wrapper .tournament .tournament-bottom-section, .tournaments-wrapper-full .tournament .tournament-bottom-section {
+    display: flex;
+    align-items: center;
+    height: 6vh;
+    font-size: 0.75vw;
+    letter-spacing: 1px; }
+    .tournaments-wrapper .tournament .tournament-bottom-section .tournament-info-section, .tournaments-wrapper-full .tournament .tournament-bottom-section .tournament-info-section {
+      width: 33%;
+      border-left: 1px solid #9E4CAD;
+      display: flex;
+      justify-content: center; }
+    .tournaments-wrapper .tournament .tournament-bottom-section .tournament-info-section.tournament-date, .tournaments-wrapper-full .tournament .tournament-bottom-section .tournament-info-section.tournament-date {
+      font-size: 0.7vw; }
+    .tournaments-wrapper .tournament .tournament-bottom-section .tournament-info-section.tournament-status, .tournaments-wrapper-full .tournament .tournament-bottom-section .tournament-info-section.tournament-status {
+      border-left: none; }
+
+.tournaments-wrapper {
+  height: 40vh; }
+
+.tournaments-wrapper-full {
+  height: 85vh;
+  overflow-y: scroll;
+  overflow-x: hidden; }
+
+/*# sourceMappingURL=dashboard.css.map */

@@ -1,0 +1,57 @@
+.user-profile {
+  text-align: center; }
+  .user-profile .user-picture-wrapper {
+    max-width: 30vw;
+    margin: 0 auto; }
+    .user-profile .user-picture-wrapper .user-picture {
+      height: 30vw;
+      max-width: 30vw; }
+    .user-profile .user-picture-wrapper .file-upload {
+      position: relative;
+      overflow: hidden;
+      margin: 10px; }
+      .user-profile .user-picture-wrapper .file-upload input.upload {
+        position: absolute;
+        width: 100px;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0); }
+  .user-profile .btn-primary {
+    border-radius: 0;
+    background-color: #4947A3;
+    border: 0; }
+    .user-profile .btn-primary:hover {
+      background-color: #3C2B63; }
+  .user-profile .input-group {
+    width: 40vh;
+    max-width: 400px;
+    margin: 0 auto 20px; }
+    .user-profile .input-group .input-with-label {
+      width: 100%; }
+      .user-profile .input-group .input-with-label label {
+        width: 100%;
+        text-align: left;
+        color: #3C2B63;
+        margin-top: 5px;
+        margin-bottom: 5px; }
+      .user-profile .input-group .input-with-label input {
+        border-radius: 0;
+        width: 100%;
+        border: 2px solid #3C2B63;
+        color: white;
+        background-color: #754996;
+        padding-left: 5px;
+        padding-right: 5px; }
+        .user-profile .input-group .input-with-label input:focus {
+          outline: none;
+          background-color: #3C2B63; }
+    .user-profile .input-group .btn-primary {
+      float: right;
+      margin-top: 20px; }
+
+/*# sourceMappingURL=userprofile.css.map */

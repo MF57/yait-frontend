@@ -1,0 +1,46 @@
+
+<!-- NAVIGATION -->
+<nav class="navbar" ng-class="{'tmp-navbar': vm.menuExpanded, 'collapsed-navbar': !vm.menuExpanded}"  role="navigation">
+    <ul class="nav navbar-nav" ng-show="vm.isAuthenticated && vm.menuExpanded">
+        <div class="user-profile" ng-click="vm.goToState('userprofile')">
+            <img ng-src="{{vm.userPictureUrl}}" class="user-picture">
+            <div class="user-username" >{{vm.username}}</div>
+        </div>
+        <li ng-class="{'active': vm.stateActive === 'Dashboard'}">
+            <a ng-click="vm.goToState('Dashboard')">DASHBOARD</a>
+        </li>
+        <li ng-class="{'active': vm.stateActive === 'TournamentCreator'}">
+            <a ng-click="vm.goToState('TournamentCreator')">TOURNAMENT CREATOR</a>
+        </li>
+        <li ng-class="{'active': vm.stateActive === 'EnrollMe'}">
+            <a ng-click="vm.goToState('EnrollMe')">ENROLL ME</a>
+        </li>
+        <li class="logout" ng-show="vm.isAuthenticated" ng-click="vm.logoutFunction()"><a ui-sref="login">LOGOUT</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav collapsed-nav" ng-show="vm.isAuthenticated && !vm.menuExpanded">
+        <div class="user-profile" ng-click="vm.showUserProfile()">
+            <img ng-src="{{vm.userPictureUrl}}" class="user-picture">
+        </div>
+        <li ng-class="{'active': vm.stateActive === 'Dashboard'}">
+            <a ng-click="vm.goToState('Dashboard')"><i class="glyphicon glyphicon-home"></i></a>
+        </li>
+        <li ng-class="{'active': vm.stateActive === 'TournamentCreator'}">
+            <a ng-click="vm.goToState('TournamentCreator')"><i class="glyphicon glyphicon-plus"></i></a>
+        </li>
+        <li ng-class="{'active': vm.stateActive === 'EnrollMe'}">
+            <a ng-click="vm.goToState('EnrollMe')"><i class="glyphicon glyphicon-check"></i></a>
+        </li>
+        <li class="logout" ng-show="vm.isAuthenticated" ng-click="vm.logoutFunction()">
+            <a ui-sref="login"><i class="glyphicon glyphicon-off"></i>
+            </a>
+        </li>
+    </ul>
+    <div ng-click="vm.menuExpanded = !vm.menuExpanded" class="expand-button">
+        <i ng-class="{'glyphicon-menu-left': vm.menuExpanded, 'glyphicon-menu-right': !vm.menuExpanded}" class="expand-button-icon glyphicon"></i>
+    </div>
+</nav>
+
+<div ng-class="{'collapsed-main': vm.menuExpanded, 'expanded-main': !vm.menuExpanded}" class="main">
+    <div class="workplace" ui-view></div>
+</div>

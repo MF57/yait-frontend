@@ -1,0 +1,118 @@
+.navbar {
+  background-color: #3C2B63;
+  border-radius: 0;
+  border: 0;
+  letter-spacing: 3px;
+  height: 100vh;
+  position: fixed; }
+  .navbar .expand-button {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-left: -11px;
+    border: 2px solid #3C2B63;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    font-size: 10px; }
+  .navbar .expand-button-icon {
+    padding: 2px 0 0 2px; }
+  .navbar .nav.navbar-nav {
+    height: 100%; }
+  .navbar a {
+    color: white; }
+  .navbar .nav > li > a:hover, .navbar .nav > li > a:focus {
+    background-color: transparent; }
+  .navbar .nav > li {
+    width: 80%;
+    margin-left: 10%;
+    border-bottom: 2px solid #9E4CAD;
+    text-align: center;
+    cursor: pointer; }
+    .navbar .nav > li a {
+      padding-right: 0;
+      padding-left: 0; }
+  .navbar .nav.collapsed-nav > li {
+    text-align: center; }
+  .navbar .nav .logout {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 20px; }
+  .navbar .nav > li:hover, .navbar li.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-bottom: 2px solid white; }
+  .navbar .user-profile {
+    text-align: center;
+    cursor: pointer;
+    width: 16vw;
+    height: 16vw;
+    margin-left: 2vw;
+    margin-top: 2vw;
+    border-bottom: 2px solid #9E4CAD; }
+    .navbar .user-profile .user-picture {
+      width: 10vw;
+      height: 10vw;
+      -webkit-border-radius: 5vw;
+      -moz-border-radius: 5vw;
+      border-radius: 5vw;
+      margin-top: 1vw; }
+    .navbar .user-profile .user-username {
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 20px; }
+  .navbar .user-profile:hover {
+    border-bottom: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.3); }
+
+.navbar.tmp-navbar {
+  width: 20vw; }
+
+.navbar.collapsed-navbar {
+  width: 5vw; }
+  .navbar.collapsed-navbar .nav > li {
+    width: 100%;
+    margin-left: 0;
+    cursor: pointer; }
+  .navbar.collapsed-navbar .user-profile {
+    height: 50px;
+    width: 5vw;
+    margin-top: 0;
+    margin-left: 0;
+    padding-top: 5px;
+    padding-bottom: 5px; }
+    .navbar.collapsed-navbar .user-profile .user-picture {
+      margin-top: 0;
+      width: 40px;
+      height: 40px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px; }
+  .navbar.collapsed-navbar .user-profile:hover {
+    border-bottom: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.3); }
+
+.main {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .main .workplace {
+    width: 95%;
+    height: 95%;
+    overflow-y: auto;
+    overflow-x: hidden; }
+
+.main.collapsed-main {
+  width: calc(100vw - 20vw);
+  margin-left: 20vw; }
+
+.main.expanded-main {
+  width: calc(100vw - 5vw);
+  margin-left: 5vw; }
+
+/*# sourceMappingURL=navbar.css.map */

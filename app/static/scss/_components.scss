@@ -1,0 +1,61 @@
+@import "variables";
+
+
+@mixin input-label() {
+  width:100%;
+  text-align: left;
+  color: $color-jacarta;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+@mixin input-text() {
+  border-radius: 0;
+  width: 100%;
+  border: 2px solid $color-jacarta;
+  color: $color-white;
+  background-color: $color-affair;
+  padding-left: 5px;
+  padding-right: 5px;
+  &:focus {
+    outline:none;
+    background-color: $color-jacarta;
+  }
+}
+@mixin select() {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  width: 100%;
+  height: 26px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 2px solid $color-jacarta;
+  color: $color-white;
+  background: $color-affair url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 24 24'><path fill='#444' d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'></path></svg>") no-repeat 100% 50%;
+  &:focus {
+    outline:none;
+    background-color: $color-jacarta;
+
+  }
+}
+@mixin textarea() {
+  border-radius: 0;
+  width: 100%;
+  height: 150px;
+  border: 2px solid $color-jacarta;
+  color: $color-white;
+  background-color: $color-affair;
+  padding-left: 5px;
+  padding-right: 5px;
+  &:focus {
+    outline:none;
+    background-color: $color-jacarta;
+  }
+}
+@mixin btn-primary() {
+  border-radius: 0;
+  background-color: $color-victoria;
+  border: 0;
+  &:hover {
+    background-color: $color-jacarta;
+  }
+}

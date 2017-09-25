@@ -1,0 +1,244 @@
+
+
+/**************************IMPORTS********************************************/
+
+@import "test.css";
+@import "navbar.css";
+@import "userprofile.css";
+@import "tournamentcreator.css";
+@import "dashboard.css";
+@import "tournament.css";
+@import "enrollMe.css";
+
+/*****************************************************************************/
+
+/* app css stylesheet */
+.navbar-inverse a {
+  cursor: pointer;
+}
+.input-group.login-form {
+  width:300px;
+}
+.input-group.login-form input {
+  width: 200px;
+  margin-bottom: 20px;
+}
+.input-group.login-form button {
+  width: 200px;
+}
+body {
+  background-color: #CEB2E2;
+  font-family: "Source Sans Pro", 'Open Sans', sans-serif;
+}
+
+@font-face {
+    font-family: Source Sans Pro;
+    src: url("../fonts/SourceSansPro-Regular.ttf");
+}
+
+
+.blurry-text {
+    color: transparent !important;
+    text-shadow: 0 0 5px rgba(255,255,255,0.5) !important;
+    border-color: rgba(255,255,255,0.3) !important;
+
+}
+
+.invisible {
+    opacity: 0;
+}
+
+
+#welcome-background {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("../images/welcome-background.jpg") fixed;
+    background-size: cover;
+    z-index: 1;
+}
+
+#welcome-background:after {
+    background: rgba(109, 73, 150, 0.7) fixed;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    content: '';
+}
+
+.welcome-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    -webkit-animation: FADE_IN_FROM_LEFT 1s  forwards;
+    -moz-animation:    FADE_IN_FROM_LEFT 1s  forwards;
+    -o-animation:      FADE_IN_FROM_LEFT 1s  forwards;
+    animation:         FADE_IN_FROM_LEFT 1s  forwards;
+
+}
+
+.welcome-title {
+    font-size: 65px;
+    width: 80%;
+    border-bottom: 2px solid white;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.welcome-content {
+    display: flex;
+    width: 80%;
+    letter-spacing: 4px;
+}
+.welcome-content p {
+    margin: 5px 30px 0 0;
+    font-size: 14px;
+}
+
+.btn.welcome-button {
+    border-radius: 0;
+    font-size: 14px;
+    letter-spacing: 3px;
+    border: 2px solid white;
+    background: none;
+    color: white;
+}
+
+.btn.welcome-button:hover {
+    color: #401732;
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn.welcome-button:focus {
+    outline: none;
+}
+
+.welcome-content .btn.welcome-button {
+    height: 50px;
+}
+
+.btn.welcome-button.login-button {
+    margin: 20px 20px 0 0;
+    -webkit-animation: FADE_IN_WITH_DELAY 1.5s  forwards;
+    -moz-animation:    FADE_IN_WITH_DELAY 1.5s  forwards;
+    -o-animation:      FADE_IN_WITH_DELAY 1.5s  forwards;
+    animation:         FADE_IN_WITH_DELAY 1.5s  forwards;
+}
+
+
+/*********************** DIALOGS ***************************/
+
+.ngdialog-theme-default.welcome-dialog {
+    /*width: 400px;*/
+    padding: 0;
+}
+
+
+.ngdialog-theme-default.welcome-dialog .ngdialog-overlay {
+    background-color: rgba(109, 73, 150, 0.95);
+}
+
+.ngdialog-theme-default.welcome-dialog .ngdialog-content {
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ngdialog-theme-default.welcome-dialog .ngdialog-close:before {
+     color: white;
+     font-weight: 100;
+     font-size: 40px;
+     margin: 20px 20px 0 0;
+ }
+
+.ngdialog-theme-default.welcome-dialog .ngdialog-close:hover:before {
+    color: #401732;
+}
+
+.welcome-dialog .form-control.welcome-dialog-input {
+    width: 320px;
+    height: 60px;
+    border-radius: 0;
+    background-color: rgba(141, 97, 150, 0);
+    border: 2px solid #401732;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.welcome-dialog .form-control.welcome-dialog-input::-webkit-input-placeholder {
+    color: #401732;
+    letter-spacing: 3px;
+}
+
+.welcome-dialog .form-control.welcome-dialog-input::-moz-placeholder {
+     color: #401732;
+    letter-spacing: 3px;
+ }
+.welcome-dialog .form-control.welcome-dialog-input:-ms-input-placeholder {
+    color: #401732;
+    letter-spacing: 3px;
+}
+.welcome-dialog .form-control.welcome-dialog-input:-moz-placeholder {
+    color: #401732;
+    letter-spacing: 3px;
+}
+.welcome-dialog .form-control.welcome-dialog-input:focus::-webkit-input-placeholder {
+    color: white;
+}
+.welcome-dialog .form-control.welcome-dialog-input:focus::-moz-placeholder {
+    color: white;
+}
+.welcome-dialog .form-control.welcome-dialog-input:focus:-ms-input-placeholder {
+    color: white;
+}
+.welcome-dialog .form-control.welcome-dialog-input:focus:-moz-placeholder {
+    color: white;
+}
+
+.welcome-dialog .form-control.welcome-dialog-input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 2px solid white;
+}
+
+.welcome-dialog .btn.welcome-button.welcome-dialog-button {
+    width: 320px;
+    height: 60px;
+}
+
+.successful-popup {
+    display: flex;
+    color: white;
+    letter-spacing: 3px;
+    font-family: "Source Sans Pro", 'Open Sans', sans-serif;
+    font-weight: 100;
+    font-size: 70px;
+}
+
+.successful-popup .glyphicon.glyphicon-ok {
+    margin: 15px 50px 0 0;
+    width: 50px;
+    height: 50px;
+    font-weight: 100;
+}
+
+.error-message {
+    text-align: center;
+    color: #f8ff13;
+    letter-spacing: 3px;
+}
+
