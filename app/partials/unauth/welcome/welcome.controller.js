@@ -44,18 +44,24 @@
                 $timeout(function () {
                     ngDialog.close();
                     vm.loginSuccessful = false;
-                    $state.go("Dashboard");
+                    $state.go("TopicList");
                 }, 1000);
             }
 
             function failureCallback() {
                 //vm.loginFailed = true;
-                TokenStorage.store('asdsdfsafbdsffbdffsfsd');
+                let token = "";
+                if (vm.login.length > 2) {
+                    token  = 'aaaaaaaaaa'
+                } else {
+                    token = 'a';
+                }
+                TokenStorage.store(token);
                 vm.loginSuccessful = true;
                 $timeout(function () {
                     ngDialog.close();
                     vm.loginSuccessful = false;
-                    $state.go("Dashboard");
+                    $state.go("TopicList");
                 }, 1000);
             }
         }

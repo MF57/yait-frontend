@@ -25,12 +25,25 @@
                 if (token === null) {
                     return null;
                 }
-                var base64Url = token.split('.')[1];
-                var base64 = base64Url.replace('-', '+').replace('_', '/');
-                return JSON.parse($window.atob(base64));
+              //  var base64Url = token.split('.')[1];
+              //  var base64 = base64Url.replace('-', '+').replace('_', '/');
+              // return JSON.parse($window.atob(base64));
+                let authorities = [];
+                console.log(token);
+                if (token.length > 2) {
+                    console.log('no jest adminem, inaczej byc nie chce');
+                    authorities.push("ROLE_ADMIN");
+                }
+                return {
+                    'username': 'Micro Fire',
+                    'authorities': authorities
+                }
             },
             isAuthenticated: function() {
                 return !(localStorage.getItem(storageKey) === null);
+            },
+            isAdmin: function() {
+                return this.decode(this.retrieve()).authorities.indexOf('ROLE_ADMIN') !== -1;
             }
         };
     }
