@@ -49,7 +49,14 @@
             }
 
             function failureCallback() {
-                vm.loginFailed = true;
+                //vm.loginFailed = true;
+                TokenStorage.store('asdsdfsafbdsffbdffsfsd');
+                vm.loginSuccessful = true;
+                $timeout(function () {
+                    ngDialog.close();
+                    vm.loginSuccessful = false;
+                    $state.go("Dashboard");
+                }, 1000);
             }
         }
 

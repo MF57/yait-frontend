@@ -10,12 +10,12 @@
     LoginService.$inject = ['$resource', 'TokenStorage', 'ApiUrls'];
 
     function LoginService ($resource, TokenStorage, ApiUrls) {
-        var service = {
-            login: login, 
+        const service = {
+            login: login,
             logout: logout
         };
 
-        var loginUrl =  ApiUrls.authlogApi + "login/credentials?appId=" + ApiUrls.appId;
+        const loginUrl = ApiUrls.authlogApi + "login/credentials?appId=" + ApiUrls.appId;
 
         function login(login, password) {
             return $resource(loginUrl, {}, {
