@@ -1,25 +1,16 @@
 
 <!-- NAVIGATION -->
-<nav class="navbar" ng-class="{'tmp-navbar': vm.menuExpanded, 'collapsed-navbar': !vm.menuExpanded}"  role="navigation">
-    <ul class="nav navbar-nav" ng-show="vm.isAuthenticated && vm.menuExpanded">
-        <li ng-show="vm.isAdmin" ng-class="{'active': vm.stateActive === 'Admin'}">
+<nav class="tmp-navbar navbar"  role="navigation">
+    <ul class="nav navbar-nav" ng-show="vm.isAuthenticated">
+        <li ng-click="vm.goToState('TopicList')" class="yait-title">YAIT</li>
+        <li class='admin-button' ng-show="vm.isAdmin" ng-class="{'active': vm.stateActive === 'Admin'}">
             <a ng-click="vm.goToState('Admin')">Admin</a>
         </li>
-        <li class="logout" ng-show="vm.isAuthenticated" ng-click="vm.logoutFunction()"><a ui-sref="login">LOGOUT</a></li>
+        <li class="logout" ng-show="vm.isAuthenticated" ng-click="vm.logoutFunction()"><a ui-sref="login">Logout</a></li>
     </ul>
 
-    <ul class="nav navbar-nav collapsed-nav" ng-show="vm.isAuthenticated && !vm.menuExpanded">
-
-        <li class="logout" ng-show="vm.isAuthenticated" ng-click="vm.logoutFunction()">
-            <a ui-sref="login"><i class="glyphicon glyphicon-off"></i>
-            </a>
-        </li>
-    </ul>
-    <div ng-click="vm.menuExpanded = !vm.menuExpanded" class="expand-button">
-        <i ng-class="{'glyphicon-menu-left': vm.menuExpanded, 'glyphicon-menu-right': !vm.menuExpanded}" class="expand-button-icon glyphicon"></i>
-    </div>
 </nav>
 
-<div ng-class="{'collapsed-main': vm.menuExpanded, 'expanded-main': !vm.menuExpanded}" class="main">
+<div class="main expanded-main">
     <div class="workplace" ui-view></div>
 </div>
