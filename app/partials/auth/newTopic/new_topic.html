@@ -1,0 +1,13 @@
+<div ng-hide='vm.loginSuccessful' class="input-group login-form">
+    <div class="error-message" ng-class="{'invisible': !vm.loginFailed}">
+        <i class="glyphicon glyphicon-alert"></i>
+        INCORRECT CREDENTIALS
+    </div>
+    <input ng-model="vm.title" type="text" class="form-control welcome-dialog-input new-topic-input" placeholder="Title">
+    <input ng-model="vm.description" class="form-control welcome-dialog-input new-topic-input" placeholder="Description">
+    <button ng-click="vm.createIssue()" class="btn welcome-button welcome-dialog-button">Create Issue</button>
+</div>
+<!--<div ng-show='vm.loginSuccessful' class="successful-popup">-->
+    <!--<i class="glyphicon glyphicon-ok"></i>-->
+    <!--<div>HI, {{vm.login.toUpperCase()}}! <br><br><br> HOW ARE YOU TODAY?</div>-->
+<!--</div>-->

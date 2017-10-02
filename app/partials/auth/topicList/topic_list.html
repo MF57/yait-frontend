@@ -1,1 +1,5 @@
-<p>Hejooo</p>
+<button ng-click="vm.showCreateIssuePopup()" class="btn btn-primary">Add New Issue</button>
+
+<ul>
+    <li ng-repeat="issue in vm.issues">{{issue.title}}</li>
+</ul>

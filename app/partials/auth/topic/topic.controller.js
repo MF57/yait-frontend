@@ -14,8 +14,8 @@
 
 
         function loadAll() {
-            Tournament.loadAll($stateParams.topicId, TokenStorage.decode(TokenStorage.retrieve()).username)
-                .$promise.then(successCallback, failureCallback);
+            // Tournament.loadAll($stateParams.topicId, TokenStorage.decode(TokenStorage.retrieve()).username)
+            //     .$promise.then(successCallback, failureCallback);
 
 
             function successCallback(data) {
