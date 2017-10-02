@@ -10,7 +10,20 @@
     TopicController.$inject = ['$stateParams', '$state', 'TokenStorage', 'Topic'];
     function TopicController($stateParams, $state, TokenStorage, Topic) {
         const vm = this;
-        vm.topic = {};
+        vm.issue = {
+            id: $stateParams.topicId,
+            title: 'Test Issue',
+            description: 'Test description'
+        };
+        vm.newPost = '';
+        vm.hasAlreadyCommented = false;
+        vm.posts = [];
+        vm.addPost = addPost;
+
+        function addPost() {
+            vm.posts.push(vm.newPost);
+            vm.hasAlreadyCommented = true;
+        }
 
 
         function loadAll() {

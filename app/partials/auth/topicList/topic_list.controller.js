@@ -9,6 +9,7 @@
         const vm = this;
         vm.loadAll = loadAll;
         vm.showCreateIssuePopup = showCreateIssuePopup;
+        vm.goToIssue = goToIssue;
         vm.issues = [];
 
 
@@ -23,6 +24,11 @@
             dialog.closePromise.then((newIssue) => {
                 vm.issues.push(newIssue.value)
             })
+        }
+
+        function goToIssue(issueId) {
+            $state.go('Topic', {'topicId' : issueId})
+
         }
 
         function loadAll() {

@@ -1,1 +1,7 @@
-<p>Siema</p>
+<h1>{{vm.issue.title}} - {{vm.issue.id}}</h1>
+<input ng-hide="vm.hasAlreadyCommented" ng-model="vm.newPost" type="text" class="form-control welcome-dialog-input" placeholder="Your comment">
+<button ng-hide="vm.hasAlreadyCommented" ng-click="vm.addPost()" class="btn btn-primary">Add Comment</button>
+<h3 ng-show="vm.hasAlreadyCommented">You have already commented in this issue</h3>
+<div ng-repeat="post in vm.posts">
+    {{post}}
+</div>

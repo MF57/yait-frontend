@@ -1,5 +1,4 @@
 <button ng-click="vm.showCreateIssuePopup()" class="btn btn-primary">Add New Issue</button>
-
-<ul>
-    <li ng-repeat="issue in vm.issues">{{issue.title}}</li>
-</ul>
+<div class='issue-badge' ng-repeat="issue in vm.issues" ng-click="vm.goToIssue(issue.id)">
+    {{issue.title}}
+</div>
