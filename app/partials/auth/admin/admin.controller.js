@@ -8,7 +8,12 @@
     function AdminController(Admin, $state) {
         const vm = this;
         vm.loadAll = loadAll;
+        vm.token = {};
+        vm.sendTokens = sendTokens;
 
+        function sendTokens() {
+            console.log(vm.token);
+        }
 
         function loadAll() {
             Admin.loadAll().$promise.then(successCallback, failureCallback);

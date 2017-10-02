@@ -7,6 +7,7 @@
     TopicListController.$inject = ['TopicList', 'ngDialog', '$state', 'TokenStorage'];
     function TopicListController(TopicList, ngDialog, $state, TokenStorage) {
         const vm = this;
+        vm.isAdmin = TokenStorage.isAdmin();
         vm.loadAll = loadAll;
         vm.showCreateIssuePopup = showCreateIssuePopup;
         vm.goToIssue = goToIssue;

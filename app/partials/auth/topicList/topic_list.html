@@ -1,4 +1,11 @@
 <button ng-click="vm.showCreateIssuePopup()" class="btn btn-primary">Add New Issue</button>
-<div class='issue-badge' ng-repeat="issue in vm.issues" ng-click="vm.goToIssue(issue.id)">
+<div class='issue-badge' ng-repeat="issue in vm.issues">
     {{issue.title}}
+    <div class="issue-actions">
+        <button ng-click="vm.goToIssue(issue.id)" class="btn btn-primary">See Discussion</button>
+        <button ng-show="vm.isAdmin" class="btn btn-primary">Start Working on Issue</button>
+        <button ng-show="vm.isAdmin" class="btn btn-primary">Won't Fix Issue</button>
+        <button ng-show="vm.isAdmin" class="btn btn-primary">Resolve Issue</button>
+        <button ng-show="vm.isAdmin" class="btn btn-primary">Delete Issue</button>
+    </div>
 </div>

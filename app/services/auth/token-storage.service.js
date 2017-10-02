@@ -31,7 +31,6 @@
                 let authorities = [];
                 console.log(token);
                 if (token.length > 2) {
-                    console.log('no jest adminem, inaczej byc nie chce');
                     authorities.push("ROLE_ADMIN");
                 }
                 return {
