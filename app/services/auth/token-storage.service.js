@@ -29,7 +29,6 @@
               //  var base64 = base64Url.replace('-', '+').replace('_', '/');
               // return JSON.parse($window.atob(base64));
                 let authorities = [];
-                console.log(token);
                 if (token.length > 2) {
                     authorities.push("ROLE_ADMIN");
                 }

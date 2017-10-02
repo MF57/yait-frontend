@@ -7,11 +7,11 @@
 
     TopicListService.$inject = ['ApiUrls', '$resource'];
     function TopicListService(ApiUrls, $resource) {
-        const resourceUrl = ApiUrls.enrollmentApi + "tournaments/my";
+        const resourceUrl = ApiUrls.backendApi + "topics";
 
         function loadAll() {
             return $resource(resourceUrl, {}, {
-                'query': { method: 'GET'}
+                'query': { method: 'GET',  isArray: true}
             }).query();
         }
 
