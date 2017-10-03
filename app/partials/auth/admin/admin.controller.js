@@ -12,7 +12,16 @@
         vm.sendTokens = sendTokens;
 
         function sendTokens() {
-            console.log(vm.token);
+            vm.token.mails = vm.token.mails.split(",");
+            Admin.createTokens(vm.token).$promise.then(successCallback, failureCallback);
+            function successCallback(data) {
+                alert('yay')
+            }
+
+            function failureCallback(error) {
+                console.log("Error while retrieving data")
+            }
+
         }
 
         function loadAll() {
