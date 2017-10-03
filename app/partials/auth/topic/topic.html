@@ -3,5 +3,5 @@
 <button ng-hide="vm.hasAlreadyCommented" ng-click="vm.addPost()" class="btn btn-primary">Add Comment</button>
 <h3 ng-show="vm.hasAlreadyCommented">You have already commented in this issue</h3>
 <div ng-repeat="post in vm.posts">
-    {{post}}
+    {{post.content}}
 </div>

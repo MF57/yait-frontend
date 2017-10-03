@@ -10,29 +10,56 @@
     TopicController.$inject = ['$stateParams', '$state', 'TokenStorage', 'Topic'];
     function TopicController($stateParams, $state, TokenStorage, Topic) {
         const vm = this;
-        vm.issue = {
-            id: $stateParams.topicId,
-            title: 'Test Issue',
-            description: 'Test description'
-        };
+        vm.issue = {};
         vm.newPost = '';
-        vm.hasAlreadyCommented = false;
+        vm.login = TokenStorage.decode(TokenStorage.retrieve()).username;
+        vm.hasAlreadyCommented = true;
         vm.posts = [];
         vm.addPost = addPost;
 
         function addPost() {
-            vm.posts.push(vm.newPost);
-            vm.hasAlreadyCommented = true;
+            Topic.createPost({
+                authorId: vm.login,
+                content: vm.newPost
+            }, vm.issue.id).$promise.then(successCallback, failureCallback);
+
+
+            function successCallback(data) {
+                vm.posts.push({
+                    id: data,
+                    topicId: vm.issue.id,
+                    authorId: vm.login,
+                    content: vm.newPost
+                });
+                vm.hasAlreadyCommented = true;
+            }
+
+            function failureCallback(error) {
+                console.log("Error while retrieving data")
+            }
+
         }
 
 
         function loadAll() {
-            // Tournament.loadAll($stateParams.topicId, TokenStorage.decode(TokenStorage.retrieve()).username)
-            //     .$promise.then(successCallback, failureCallback);
+            Topic.getIssue($stateParams.topicId)
+                .$promise.then(issueSuccessCallback, failureCallback);
 
 
-            function successCallback(data) {
-                vm.topic = data;
+            function issueSuccessCallback(data) {
+                vm.issue = data;
+                Topic.getPosts($stateParams.topicId)
+                    .$promise.then(postsSuccessCallback, failureCallback);
+
+                function postsSuccessCallback(data) {
+                    vm.posts = data;
+                    if (vm.posts.filter(post => post.authorId === vm.login).length === 0) {
+                        vm.hasAlreadyCommented = false;
+                    }
+
+
+
+                }
             }
 
             function failureCallback(error) {
