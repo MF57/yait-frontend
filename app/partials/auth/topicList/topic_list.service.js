@@ -15,8 +15,22 @@
             }).query();
         }
 
+        function create(issue) {
+            return $resource(resourceUrl, {}, {
+                'create': {
+                    method: 'POST',
+                    isArray: false,
+                    responseType: 'text',
+                    transformResponse: function(data, headersGetter, status) {
+                        return {content: data};
+                    }
+                }
+            }).create(issue);
+        }
+
         return {
-            loadAll: loadAll
+            loadAll: loadAll,
+            create: create
         };
 
     }

@@ -8,6 +8,7 @@
     function TopicListController(TopicList, ngDialog, $state, TokenStorage) {
         const vm = this;
         vm.isAdmin = TokenStorage.isAdmin();
+        vm.login = TokenStorage.decode(TokenStorage.retrieve()).username;
         vm.loadAll = loadAll;
         vm.showCreateIssuePopup = showCreateIssuePopup;
         vm.goToIssue = goToIssue;
@@ -23,7 +24,24 @@
                 width: "100%"
             });
             dialog.closePromise.then((newIssue) => {
-                vm.issues.push(newIssue.value)
+                TopicList.create({
+                    title: newIssue.value.title,
+                    description: newIssue.value.description,
+                    authorId: vm.login
+                }).$promise.then(successCallback, failureCallback);
+
+                function successCallback(data) {
+                    vm.issues.push({
+                        id: data.content,
+                        title: newIssue.value.title,
+                        description: newIssue.value.description,
+                        authorId: vm.login
+                    })
+                }
+
+                function failureCallback(error) {
+                    console.log("Error while retrieving data")
+                }
             })
         }
 
@@ -37,6 +55,7 @@
 
 
             function successCallback(data) {
+                vm.issues = data;
             }
 
             function failureCallback(error) {
