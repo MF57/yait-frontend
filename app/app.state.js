@@ -32,6 +32,7 @@
             })
             .state('token', {
                 abstract: true,
+                url:"/token/{tokenId}",
                 templateUrl: "layouts/unauth/token_navbar.html",
                 controller: "TokenNavbarController",
                 controllerAs: "vm",

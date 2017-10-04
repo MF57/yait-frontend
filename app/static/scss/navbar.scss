@@ -63,6 +63,21 @@
     right: 0;
   }
 
+  .nav .token-info {
+    color: white;
+    font-size: 24px;
+    line-height: 70px;
+    position: absolute;
+    cursor: initial;
+    width: 300px;
+    top: 0;
+    right: 0;
+    &:hover {
+      border-bottom: 2px solid $color-studio;
+      background-color: $color-jacarta;
+    }
+  }
+
 
   .nav > li:hover, li.active {
     height: 70px;
