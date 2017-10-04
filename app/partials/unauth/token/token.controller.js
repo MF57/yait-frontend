@@ -12,8 +12,16 @@
         vm.loadAll = loadAll;
         vm.goToIssue = goToIssue;
 
-        function vote() {
+        function vote(issueId) {
+            Token.vote({token: $stateParams.tokenId}, issueId).$promise.then(successCallback, failureCallback);
 
+
+            function successCallback(data) {
+            }
+
+            function failureCallback(error) {
+                console.log("Error while retrieving data")
+            }
         }
 
         function goToIssue(issueId) {

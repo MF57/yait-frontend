@@ -4,9 +4,9 @@
         .module('myApp')
         .controller('TokenNavbarController', TokenNavbarController);
 
-    TokenNavbarController.$inject = ['$state', '$stateParams', 'Token'];
+    TokenNavbarController.$inject = ['$state', '$stateParams', 'Token', '$scope'];
 
-    function TokenNavbarController($state, $stateParams, Token) {
+    function TokenNavbarController($state, $stateParams, Token, $scope) {
         const vm = this;
         vm.token = {};
         vm.loadAll = loadAll;
@@ -25,6 +25,7 @@
             function successCallback(data) {
                 if (typeof data.token !== 'undefined') {
                     vm.token = data;
+                    $scope.token = data;
                 } else {
                     $state.go('welcome');
                 }

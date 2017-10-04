@@ -1,5 +1,5 @@
 <h1>{{vm.issue.title}} - {{vm.issue.id}}</h1>
-<button  class="btn btn-primary">Vote</button>
+<button ng-click="vm.vote()" class="btn btn-primary">Vote</button>
 <div ng-repeat="post in vm.posts">
     {{post.content}}
 </div>

@@ -12,7 +12,14 @@
         vm.loadAll = loadAll;
 
         function vote() {
+            TokenTopic.vote({token: $stateParams.tokenId}, $stateParams.topicId).$promise.then(successCallback, failureCallback);
 
+            function successCallback(data) {
+            }
+
+            function failureCallback(error) {
+                console.log("Error while retrieving data")
+            }
         }
 
         function loadAll() {
