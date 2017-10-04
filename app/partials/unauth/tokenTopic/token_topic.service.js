@@ -7,23 +7,17 @@
 
     TokenTopicService.$inject = ['ApiUrls', '$resource'];
     function TokenTopicService(ApiUrls, $resource) {
-        const tokenUrl = ApiUrls.backendApi + "tokens";
         const topicUrl = ApiUrls.backendApi + "topics";
 
-        function getToken(tokenId) {
-            return $resource(tokenUrl + '/' + tokenId, {}, {
-                'query': { method: 'GET', isArray: false}
-            }).query();
-        }
 
         function getIssue(issueId) {
-            return $resource(resourceUrl + '/' + issueId, {}, {
+            return $resource(topicUrl + '/' + issueId, {}, {
                 'query': { method: 'GET', isArray: false}
             }).query();
         }
 
         function getPosts(issueId) {
-            return $resource(resourceUrl + '/' + issueId + "/posts", {}, {
+            return $resource(topicUrl + '/' + issueId + "/posts", {}, {
                 'query': { method: 'GET', isArray: true}
             }).query();
         }
@@ -45,7 +39,6 @@
         return {
             getIssue: getIssue,
             getPosts: getPosts,
-            getToken: getToken,
             vote: vote
         };
 

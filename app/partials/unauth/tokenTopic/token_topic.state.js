@@ -10,7 +10,7 @@
 
         $stateProvider
             .state('TokenTopic', {
-                url:"/token/{tokenId}/topic/{topicId}",
+                url:"/topic/{topicId}",
                 templateUrl: "partials/unauth/tokenTopic/token_topic.html",
                 controller: "TokenTopicCtrl",
                 controllerAs: "vm",
