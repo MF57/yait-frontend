@@ -4,22 +4,30 @@
         .module('myApp')
         .controller('TokenCtrl', TokenController);
 
-    TokenController.$inject = ['Token', '$state', '$stateParams'];
-    function TokenController(Token, $state, $stateParams) {
+    TokenController.$inject = ['Token', '$state', '$stateParams', '$scope'];
+    function TokenController(Token, $state, $stateParams, $scope) {
         const vm = this;
         vm.vote = vote;
+        vm.canVote = canVote;
         vm.issues = [];
         vm.loadAll = loadAll;
         vm.goToIssue = goToIssue;
 
-        function vote(issueId) {
-            Token.vote({token: $stateParams.tokenId}, issueId).$promise.then(successCallback, failureCallback);
+        function canVote(issue) {
+            return issue.votes.indexOf($scope.token.id) === -1
+        }
 
 
-            function successCallback(data) {
+        function vote(issue) {
+            Token.vote({token: $stateParams.tokenId}, issue.id).$promise.then(successCallback, failureCallback);
+
+
+            function successCallback() {
+                issue.votes.push($scope.token.id);
+                $scope.token.votesLeft -= 1;
             }
 
-            function failureCallback(error) {
+            function failureCallback() {
                 console.log("Error while retrieving data")
             }
         }
@@ -37,7 +45,7 @@
                 vm.issues = data;
             }
 
-            function failureCallback(error) {
+            function failureCallback() {
                 console.log("Error while retrieving data")
             }
         }

@@ -29,7 +29,8 @@
                     id: data,
                     topicId: vm.issue.id,
                     authorId: vm.login,
-                    content: vm.newPost
+                    content: vm.newPost,
+                    votes: []
                 });
                 vm.hasAlreadyCommented = true;
             }

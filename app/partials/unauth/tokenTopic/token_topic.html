@@ -1,5 +1,6 @@
 <h1>{{vm.issue.title}} - {{vm.issue.id}}</h1>
-<button ng-click="vm.vote()" class="btn btn-primary">Vote</button>
+<button ng-show="vm.canVote()" ng-click="vm.vote()" class="btn btn-primary">Vote</button>
+<h3 ng-hide="vm.canVote()">You have already voted for that issue!</h3>
 <div ng-repeat="post in vm.posts">
     {{post.content}}
 </div>

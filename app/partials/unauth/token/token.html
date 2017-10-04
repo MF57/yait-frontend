@@ -2,6 +2,7 @@
     {{issue.title}}
     <div class="issue-actions">
         <button ng-click="vm.goToIssue(issue.id)" class="btn btn-primary">See Discussion</button>
-        <button ng-click="vm.vote(issue.id)" class="btn btn-primary">Vote</button>
+        <button ng-show='vm.canVote(issue)' ng-click="vm.vote(issue)" class="btn btn-primary">Vote</button>
+        <h3 ng-hide='vm.canVote(issue)'>You have already voted on that issue</h3>
     </div>
 </div>
