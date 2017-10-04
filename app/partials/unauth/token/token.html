@@ -1,0 +1,8 @@
+<h2>You have 7 votes until 23.07.2017</h2>
+<div class='issue-badge' ng-repeat="issue in vm.issues">
+    {{issue.title}}
+    <div class="issue-actions">
+        <button ng-click="vm.goToIssue(issue.id)" class="btn btn-primary">See Discussion</button>
+        <button class="btn btn-primary">Vote</button>
+    </div>
+</div>

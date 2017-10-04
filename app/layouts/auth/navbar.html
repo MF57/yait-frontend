@@ -3,7 +3,7 @@
 <nav class="tmp-navbar navbar"  role="navigation">
     <ul class="nav navbar-nav" ng-show="vm.isAuthenticated">
         <li ng-click="vm.goToState('TopicList')" class="yait-title">YAIT</li>
-        <li class='admin-button' ng-show="vm.isAdmin" ng-class="{'active': vm.stateActive === 'Admin'}">
+        <li class='admin-button' ng-show="vm.isAuthenticated && vm.isAdmin" ng-class="{'active': vm.stateActive === 'Admin'}">
             <a ng-click="vm.goToState('Admin')">Admin</a>
         </li>
         <li class="logout" ng-show="vm.isAuthenticated" ng-click="vm.logoutFunction()"><a ui-sref="login">Logout</a></li>

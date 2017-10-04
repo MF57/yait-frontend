@@ -29,6 +29,12 @@
                 resolve: {
                     security: SecureState
                 }
+            })
+            .state('token', {
+                abstract: true,
+                templateUrl: "layouts/unauth/token_navbar.html",
+                controller: "TokenNavbarController",
+                controllerAs: "vm",
             });
 
     }
