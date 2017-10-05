@@ -18,6 +18,7 @@
         vm.addPost = addPost;
 
         function addPost() {
+            console.log(TokenStorage.decode(TokenStorage.retrieve()));
             Topic.createPost({
                 authorId: vm.login,
                 content: vm.newPost

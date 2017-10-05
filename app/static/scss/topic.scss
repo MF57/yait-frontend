@@ -1,0 +1,89 @@
+@import "variables";
+
+.issue-view-title {
+  background-color: $color-jacarta;
+  color: white;
+  height: 60px;
+  line-height: 60px;
+  display: flex;
+  font-size: 40px;
+  padding-left: 20px;
+}
+
+.issue-view-votes {
+  margin-left: auto;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.issue-view-description {
+  border: 2px solid $color-jacarta;
+  min-height: 100px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.post-header {
+  background-color: $color-jacarta;
+  color: white;
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+.post-content {
+  border: 2px solid $color-jacarta;
+  min-height: 60px;
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.create-new-post-layout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.new-post-input {
+  height: 100px;
+  margin-bottom: 20px;
+  width: 80%;
+  text-indent: 10px;
+}
+
+.new-post-button {
+  color: white;
+  border-radius: 0;
+  background-color: $color-jacarta;
+  height: 50px;
+  font-size: 24px;
+  width: 200px;
+  &:hover {
+    color: white;
+  }
+
+  &:focus, &:active {
+    outline: none;
+    color: white;
+  }
+}
+
+.issue-view-vote-button {
+  cursor: pointer;
+  background-color: $color-studio;
+  border: 2px solid white;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 45px;
+  margin-right: 20px;
+
+}

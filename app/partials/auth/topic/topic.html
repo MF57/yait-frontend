@@ -1,7 +1,23 @@
-<h1>{{vm.issue.title}} - {{vm.issue.id}}</h1>
-<input ng-hide="vm.hasAlreadyCommented" ng-model="vm.newPost" type="text" class="form-control welcome-dialog-input" placeholder="Your comment">
-<button ng-hide="vm.hasAlreadyCommented" ng-click="vm.addPost()" class="btn btn-primary">Add Comment</button>
-<h3 ng-show="vm.hasAlreadyCommented">You have already commented in this issue</h3>
-<div ng-repeat="post in vm.posts">
-    {{post.content}}
+<div class="issue-view-title">{{vm.issue.title}}
+    <div class="issue-view-votes">
+        Votes: {{vm.issue.votes.length}}
+    </div>
 </div>
+<div class="issue-view-description">
+    <h4>Description:</h4>
+    {{vm.issue.description}}
+</div>
+
+<div class="post-badge" ng-repeat="post in vm.posts">
+    <div class="post-header">{{post.authorId}} has written:</div>
+    <div class="post-content">{{post.content}}</div>
+</div>
+
+
+<div class="create-new-post-layout">
+    <input ng-hide="vm.hasAlreadyCommented" ng-model="vm.newPost" type="text" class="new-post-input"
+           placeholder="Your comment">
+    <button ng-hide="vm.hasAlreadyCommented" ng-click="vm.addPost()" class="btn new-post-button">Add Comment</button>
+    <h3 ng-show="vm.hasAlreadyCommented">You have already commented in this issue</h3>
+</div>
+
