@@ -15,6 +15,7 @@
         vm.issues = [];
 
 
+
         function showCreateIssuePopup() {
             const dialog = ngDialog.open({
                 controller: "NewTopicCtrl",
@@ -35,7 +36,8 @@
                         id: data.content,
                         title: newIssue.value.title,
                         description: newIssue.value.description,
-                        authorId: vm.login
+                        authorId: vm.login,
+                        votes: []
                     })
                 }
 

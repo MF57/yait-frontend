@@ -1,6 +1,89 @@
-.issue-badge {
-  margin: 5px 0;
-  border: 2px solid white;
-  padding: 5px;
+@import "variables";
+
+
+.issues-accordion {
+  margin-top: 20px;
 }
+
+.issue-button {
+  color: white;
+  border-radius: 0;
+  background-color: $color-jacarta;
+  height: 50px;
+  font-size: 24px;
+  width: 200px;
+  &:hover {
+    color: white;
+  }
+
+  &:focus, &:active {
+    outline: none;
+    color: white;
+  }
+
+  i {
+    margin-right: 5px;
+  }
+}
+
+.issue-header {
+  height: 50px;
+  display: flex;
+  background-color: $color-jacarta;
+  cursor: pointer;
+  border: 1px solid $color-studio;
+  color: white;
+
+  .issue-title {
+    height: 100%;
+    font-size: 24px;
+    margin-left: 20px;
+    line-height: 50px;
+    span {
+      color: #CEB2E2;
+    }
+  }
+}
+
+.issue-body {
+  color: $color-jacarta;
+  border: 1px solid $color-studio;
+  border-right-width: 2px;
+  border-left-width: 2px;
+  padding: 20px 10px;
+}
+
+.align-right {
+  width: 350px;
+  display: flex;
+  margin-left: auto;
+  margin-right: 15px;
+  align-items: center;
+}
+
+.issue-arrow {
+  margin-top: 5px;
+  width: 30px;
+  font-size: 24px;
+
+}
+
+.issue-votes {
+  font-size: 24px;
+
+  width: 150px;
+}
+
+.issue-discussion {
+  width: 170px;
+  margin-right: 20px;
+  line-height: 26px;
+  height: 30px;
+  font-size: 16px;
+  background-color: $color-studio;
+  text-align: center;
+  border: 2px solid white;
+}
+
+
 
