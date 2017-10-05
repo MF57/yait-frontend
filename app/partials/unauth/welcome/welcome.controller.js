@@ -49,19 +49,13 @@
             }
 
             function failureCallback() {
-                //vm.loginFailed = true;
-                let token = "";
-                if (vm.login.length > 2) {
-                    token  = 'aaaaaaaaaa'
-                } else {
-                    token = 'a';
-                }
-                TokenStorage.store(token);
-                vm.loginSuccessful = true;
+                vm.loginFailed = true;
+                TokenStorage.clear();
+                vm.loginSuccessful = false;
                 $timeout(function () {
                     ngDialog.close();
                     vm.loginSuccessful = false;
-                    $state.go("TopicList");
+                    $state.go("welcome");
                 }, 1000);
             }
         }

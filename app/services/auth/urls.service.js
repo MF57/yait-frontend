@@ -9,18 +9,11 @@
 
     ApiUrls.$inject = [];
     function ApiUrls() {
-        const enrollment = "http://tmp-core.tegess.com:8093/";
-        const core = "http://tmp-core.tegess.com:8092/";
-        const stats = "http://tmp-stats.tegess.com:8094/";
-        const authlog = "http://tmp-authlog.tegess.com:8090/";
+        const authlog = "http://localhost:8080/";
         const backend = "http://localhost:8080/";
-        const api = "api/";
-        this.enrollmentApi = enrollment + api;
+        const api = "";
         this.backendApi = backend;
-        this.coreApi = core + api;
-        this.statsApi = stats + api;
         this.authlogApi = authlog + api;
-        this.appId="57e7f07946e0fb000155789f";
         return this;
     }
 

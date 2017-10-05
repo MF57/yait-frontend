@@ -15,7 +15,7 @@
             logout: logout
         };
 
-        const loginUrl = ApiUrls.authlogApi + "login/credentials?appId=" + ApiUrls.appId;
+        const loginUrl = ApiUrls.authlogApi + "login/credentials";
 
         function login(login, password) {
             return $resource(loginUrl, {}, {

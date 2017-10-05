@@ -9,6 +9,7 @@
 
 
     TokenStorage.$inject = ['$window'];
+
     function TokenStorage($window) {
         var storageKey = 'auth_token';
         return {
@@ -25,28 +26,18 @@
                 if (token === null) {
                     return null;
                 }
-              //  var base64Url = token.split('.')[1];
-              //  var base64 = base64Url.replace('-', '+').replace('_', '/');
-              // return JSON.parse($window.atob(base64));
-                let authorities = [];
-                if (token.length > 2) {
-                    authorities.push("ROLE_ADMIN");
-                }
-                return {
-                    'username': 'Micro Fire',
-                    'authorities': authorities
-                }
+                var base64Url = token.split('.')[1];
+                var base64 = base64Url.replace('-', '+').replace('_', '/');
+                return JSON.parse($window.atob(base64));
             },
-            isAuthenticated: function() {
+            isAuthenticated: function () {
                 return !(localStorage.getItem(storageKey) === null);
             },
-            isAdmin: function() {
-                return this.decode(this.retrieve()).authorities.indexOf('ROLE_ADMIN') !== -1;
+            isAdmin: function () {
+                return this.decode(this.retrieve()).privileges.indexOf('Admin') !== -1;
             }
         };
     }
-
-
 
 
 })();
