@@ -1,8 +1,24 @@
-<div class='issue-badge' ng-repeat="issue in vm.issues">
-    {{issue.title}}
-    <div class="issue-actions">
-        <button ng-click="vm.goToIssue(issue.id)" class="btn btn-primary">See Discussion</button>
-        <button ng-show='vm.canVote(issue)' ng-click="vm.vote(issue)" class="btn btn-primary">Vote</button>
-        <h3 ng-hide='vm.canVote(issue)'>You have already voted on that issue</h3>
+<div class="issues-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+    <div ng-repeat = "issue in vm.issues" class="card">
+        <div class="issue-header card-header" role="tab" id="{{issue.id}}-heading"
+             data-toggle="collapse" data-parent="#accordion" data-target="#{{issue.id}}-collapse"
+             aria-expanded="false" aria-controls="{{issue.id}}-collapse">
+            <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
+            <div class="align-right">
+                <div class="issue-votes">
+                    <div class=issue-vote-button ng-click="vm.vote(issue)" ng-show="vm.canVote(issue)">+1</div>
+                    Votes: {{issue.votes.length}}
+                </div>
+                <div ng-click="vm.goToIssue(issue.id)" class="issue-discussion">See discussion</div>
+                <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
+            </div>
+        </div>
+        <div id="{{issue.id}}-collapse" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading">
+            <div class="issue-body card-block">
+                <h4>Description:</h4>
+                {{issue.description}}
+            </div>
+        </div>
     </div>
+
 </div>

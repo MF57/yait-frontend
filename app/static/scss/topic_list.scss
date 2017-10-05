@@ -70,7 +70,7 @@
 
 .issue-votes {
   font-size: 24px;
-
+display: flex;
   width: 150px;
 }
 
@@ -98,6 +98,17 @@
 
 .welcome-dialog .form-control.welcome-dialog-input.new-issue-input.description-input {
   height: 200px;
+}
+
+.issue-vote-button {
+  background-color: $color-studio;
+  border: 2px solid white;
+  border-radius: 100%;
+  width: 40px;
+  text-align: center;
+  margin-left: -50px;
+  margin-right: 10px;
+
 }
 
 
