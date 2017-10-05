@@ -85,5 +85,20 @@
   border: 2px solid white;
 }
 
+.new-issue-form.input-group.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-dialog .form-control.welcome-dialog-input.new-issue-input {
+  width: 80%;
+}
+
+.welcome-dialog .form-control.welcome-dialog-input.new-issue-input.description-input {
+  height: 200px;
+}
+
 
 

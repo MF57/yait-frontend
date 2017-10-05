@@ -9,14 +9,20 @@
         const vm = this;
         vm.title = '';
         vm.description = '';
+        vm.formValidation = false;
         vm.createIssue = createIssue;
 
 
         function createIssue() {
-            ngDialog.close('', {
-                title: vm.title,
-                description: vm.description
-            });
+            vm.formValidation = false;
+            if (vm.title !== '' && vm.description !== '') {
+                ngDialog.close('', {
+                    title: vm.title,
+                    description: vm.description
+                });
+            } else {
+                vm.formValidation = true;
+            }
         }
 
 

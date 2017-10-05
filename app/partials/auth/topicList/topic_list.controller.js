@@ -25,11 +25,13 @@
                 width: "100%"
             });
             dialog.closePromise.then((newIssue) => {
-                TopicList.create({
-                    title: newIssue.value.title,
-                    description: newIssue.value.description,
-                    authorId: vm.login
-                }).$promise.then(successCallback, failureCallback);
+                if (newIssue.value.title !== "" && newIssue.value.description) {
+                    TopicList.create({
+                        title: newIssue.value.title,
+                        description: newIssue.value.description,
+                        authorId: vm.login
+                    }).$promise.then(successCallback, failureCallback);
+                }
 
                 function successCallback(data) {
                     vm.issues.push({
