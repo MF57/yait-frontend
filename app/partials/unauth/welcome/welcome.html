@@ -1,2 +1,18 @@
-<h1>YAIT</h1>
-<div ng-click="vm.showLoginPopup()" class="btn btn-primary">Login</div>
+<div id="welcome-background">
+    <div class="welcome-wrapper ">
+        <h1 ng-class="{'blurry-text': vm.blurry}" class="text-left welcome-title">YET ANOTHER ISSUE TRACKER</h1>
+        <div class="text-left welcome-content">
+            <p ng-class="{'blurry-text': vm.blurry}">ANY ISSUE CAN BE SOLVED UNDER APPROPRIATE CIRCUMSTANCES.
+                <br>IN THE FINITE AMOUNT OF TIME.
+            </p>
+            <button ng-class="{'blurry-text': vm.blurry}" ng-hide="vm.isAuthenticated" ng-click="vm.showLoginPopup()"
+                    class="btn welcome-button ">
+                LOGIN <i class="glyphicon glyphicon-menu-right"></i>
+            </button>
+            <button ng-class="{'blurry-text': vm.blurry}" ng-show="vm.isAuthenticated" ui-sref="TopicList"
+                    class="btn welcome-button">
+                LET'S GET STARTED <i class="glyphicon glyphicon-menu-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
