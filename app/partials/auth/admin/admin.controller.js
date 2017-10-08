@@ -15,7 +15,7 @@
             vm.token.mails = vm.token.mails.split(",");
             Admin.createTokens(vm.token).$promise.then(successCallback, failureCallback);
             function successCallback(data) {
-                alert('yay')
+                alert('Tokens created')
             }
 
             function failureCallback(error) {

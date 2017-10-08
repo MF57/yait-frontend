@@ -9,13 +9,13 @@
                     <div class=issue-vote-button ng-click="vm.vote(issue)" ng-show="vm.canVote(issue)">+1</div>
                     Votes: {{issue.votes.length}}
                 </div>
-                <div ng-click="vm.goToIssue(issue.id)" class="issue-discussion">See discussion</div>
+                <div ng-click="vm.goToIssue(issue.id)" class="issue-button">See discussion</div>
                 <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
             </div>
         </div>
         <div id="{{issue.id}}-collapse" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading">
             <div class="issue-body card-block">
-                <h4>Description:</h4>
+                <h4>Created by {{issue.authorId}} on </h4>
                 {{issue.description}}
             </div>
         </div>

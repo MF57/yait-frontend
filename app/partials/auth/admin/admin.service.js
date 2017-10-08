@@ -7,16 +7,17 @@
 
     AdminService.$inject = ['ApiUrls', '$resource'];
     function AdminService(ApiUrls, $resource) {
-        const resourceUrl = ApiUrls.backendApi + "tokens";
+        const tokenUrl = ApiUrls.backendApi + "tokens/";
+        const topicUrl = ApiUrls.backendApi + "topics/";
 
         function loadAll() {
-            return $resource(resourceUrl, {}, {
+            return $resource(tokenUrl, {}, {
                 'query': { method: 'GET'}
             }).query();
         }
 
         function createTokens(token) {
-            return $resource(resourceUrl + "/mails", {}, {
+            return $resource(tokenUrl + "mails", {}, {
                 'create': {
                     method: 'POST',
                     isArray: false,
@@ -28,9 +29,37 @@
             }).create(token);
         }
 
+        function open(issueId) {
+            return $resource(topicUrl + issueId + "/open", {}, {
+                'open': {
+                    method: 'POST',
+                }
+            }).open({});
+        }
+
+        function wontFix(issueId) {
+            return $resource(topicUrl + issueId + "/wontfix", {}, {
+                'wontFix': {
+                    method: 'POST',
+                }
+            }).wontFix({});
+        }
+
+        function resolve(issueId) {
+            return $resource(topicUrl + issueId + "/close", {}, {
+                'resolve': {
+                    method: 'POST',
+                }
+            }).resolve({});
+        }
+
+
         return {
             loadAll: loadAll,
-            createTokens: createTokens
+            createTokens: createTokens,
+            open: open,
+            wontFix: wontFix,
+            resolve: resolve
         };
 
     }

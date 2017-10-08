@@ -1,4 +1,4 @@
-<button ng-click="vm.showCreateIssuePopup()" class="btn issue-button"><i class="glyphicon glyphicon-plus"></i>Add New Issue</button>
+<button ng-click="vm.showCreateIssuePopup()" class="btn new-issue-button"><i class="glyphicon glyphicon-plus"></i>Add New Issue</button>
 <div class="issues-accordion" id="accordion" role="tablist" aria-multiselectable="true">
     <div ng-repeat = "issue in vm.issues" class="card">
         <div class="issue-header card-header" role="tab" id="{{issue.id}}-heading"
@@ -7,13 +7,19 @@
             <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
             <div class="align-right">
                 <div class="issue-votes">Votes: {{issue.votes.length}}</div>
-                <div ng-click="vm.goToIssue(issue.id)" class="issue-discussion">See discussion</div>
+                <div ng-click="vm.goToIssue(issue.id)" class="issue-button">See discussion</div>
                 <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
             </div>
         </div>
         <div id="{{issue.id}}-collapse" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading">
             <div class="issue-body card-block">
-                <h4>Description:</h4>
+                <h4>Admin Options:</h4>
+                <div class="admin-options" ng-show="vm.isAdmin">
+                    <div ng-show='issue.state == "Opened"' ng-click="vm.startWorkingOnIssue(issue)" class="issue-button">Start Working</div>
+                    <div ng-show='issue.state == "WorkInProgress" || issue.state == "Opened"' ng-click="vm.wontFixIssue(issue)" class="issue-button">Won't Fix</div>
+                    <div ng-show='issue.state == "WorkInProgress"' ng-click="vm.resolveIssue(issue)" class="issue-button">Resolve</div>
+                </div>
+                <h4>Created by {{issue.authorId}} on </h4>
                 {{issue.description}}
             </div>
         </div>

@@ -4,14 +4,17 @@
         .module('myApp')
         .controller('TopicListCtrl', TopicListController);
 
-    TopicListController.$inject = ['TopicList', 'ngDialog', '$state', 'TokenStorage'];
-    function TopicListController(TopicList, ngDialog, $state, TokenStorage) {
+    TopicListController.$inject = ['TopicList', 'ngDialog', '$state', 'TokenStorage', 'Admin'];
+    function TopicListController(TopicList, ngDialog, $state, TokenStorage, Admin) {
         const vm = this;
         vm.isAdmin = TokenStorage.isAdmin();
         vm.login = TokenStorage.decode(TokenStorage.retrieve()).username;
         vm.loadAll = loadAll;
         vm.showCreateIssuePopup = showCreateIssuePopup;
         vm.goToIssue = goToIssue;
+        vm.startWorkingOnIssue = startWorkingOnIssue;
+        vm.resolveIssue = resolveIssue;
+        vm.wontFixIssue = wontFixIssue;
         vm.issues = [];
 
 
@@ -39,6 +42,7 @@
                         title: newIssue.value.title,
                         description: newIssue.value.description,
                         authorId: vm.login,
+                        state: "Opened",
                         votes: []
                     })
                 }
@@ -52,6 +56,45 @@
         function goToIssue(issueId) {
             $state.go('Topic', {'topicId' : issueId})
 
+        }
+
+        function startWorkingOnIssue(issue) {
+            Admin.open(issue.id).$promise.then(successCallback, failureCallback);
+
+
+            function successCallback(data) {
+                issue.state = "WorkInProgress"
+            }
+
+            function failureCallback(error) {
+                console.log("Error while retrieving data")
+            }
+        }
+
+        function wontFixIssue(issue) {
+            Admin.wontFix(issue.id).$promise.then(successCallback, failureCallback);
+
+
+            function successCallback(data) {
+                issue.state = "WontFix"
+            }
+
+            function failureCallback(error) {
+                console.log("Error while retrieving data")
+            }
+        }
+
+        function resolveIssue(issue) {
+            Admin.resolve(issue.id).$promise.then(successCallback, failureCallback);
+
+
+            function successCallback(data) {
+                issue.state = "WontFix"
+            }
+
+            function failureCallback(error) {
+                console.log("Error while retrieving data")
+            }
         }
 
         function loadAll() {
