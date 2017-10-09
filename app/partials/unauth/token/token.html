@@ -6,7 +6,7 @@
             <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
             <div class="align-right">
                 <div class="issue-votes">
-                    <div class=issue-vote-button ng-click="vm.vote(issue)" ng-show="vm.canVote(issue)">+1</div>
+                    <div class=issue-vote-button ng-click="vm.vote(issue)">+1</div>
                     Votes: {{issue.votes.length}}
                 </div>
                 <div ng-click="vm.goToIssue(issue.id)" class="issue-button">See discussion</div>
