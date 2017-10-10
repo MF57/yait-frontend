@@ -17,7 +17,7 @@
         }
 
         function getTopics() {
-            return $resource(topicUrl, {}, {
+            return $resource(topicUrl + "/active", {}, {
                 'query': { method: 'GET',  isArray: true}
             }).query();
         }

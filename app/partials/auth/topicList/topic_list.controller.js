@@ -15,8 +15,17 @@
         vm.startWorkingOnIssue = startWorkingOnIssue;
         vm.resolveIssue = resolveIssue;
         vm.wontFixIssue = wontFixIssue;
+        vm.changeTab = changeTab;
         vm.issues = [];
+        vm.openedIssues = [];
+        vm.workInProgressIssues = [];
+        vm.wontFixIssues = [];
+        vm.resolvedIssues = [];
+        vm.activeTab = "Opened";
 
+        function changeTab(tab) {
+            vm.activeTab = tab;
+        }
 
 
         function showCreateIssuePopup() {
@@ -37,14 +46,16 @@
                 }
 
                 function successCallback(data) {
-                    vm.issues.push({
+                    let result = {
                         id: data.content,
                         title: newIssue.value.title,
                         description: newIssue.value.description,
                         authorId: vm.login,
                         state: "Opened",
                         votes: []
-                    })
+                    };
+                    vm.issues.push(result);
+                    vm.openedIssues.push(result);
                 }
 
                 function failureCallback(error) {
@@ -63,7 +74,9 @@
 
 
             function successCallback(data) {
-                issue.state = "WorkInProgress"
+                issue.state = "WorkInProgress";
+                removeIssue(vm.openedIssues, issue);
+                vm.workInProgressIssues.push(issue);
             }
 
             function failureCallback(error) {
@@ -76,7 +89,10 @@
 
 
             function successCallback(data) {
-                issue.state = "WontFix"
+                issue.state = "WontFix";
+                removeIssue(vm.workInProgressIssues, issue);
+                removeIssue(vm.openedIssues, issue);
+                vm.wontFixIssues.push(issue);
             }
 
             function failureCallback(error) {
@@ -89,11 +105,21 @@
 
 
             function successCallback(data) {
-                issue.state = "WontFix"
+                issue.state = "Closed";
+                removeIssue(vm.workInProgressIssues, issue);
+                vm.resolvedIssues.push(issue);
+
             }
 
             function failureCallback(error) {
                 console.log("Error while retrieving data")
+            }
+        }
+
+        function removeIssue(issues, issue) {
+            let index = issues.indexOf(issue);
+            if (index !== -1) {
+                issues.splice(index, 1);
             }
         }
 
@@ -103,10 +129,18 @@
 
             function successCallback(data) {
                 vm.issues = data;
+                vm.openedIssues = filterByStatus(data, "Opened").sort((a,b) => b.votes.length - a.votes.length);
+                vm.workInProgressIssues = filterByStatus(data, "WorkInProgress").sort((a,b) => b.votes.length - a.votes.length);
+                vm.wontFixIssues = filterByStatus(data, "WontFix").sort((a,b) => b.votes.length - a.votes.length);
+                vm.resolvedIssues = filterByStatus(data, "Closed").sort((a,b) => b.votes.length - a.votes.length);
             }
 
             function failureCallback(error) {
                 console.log("Error while retrieving data")
+            }
+
+            function filterByStatus(issues, status) {
+                return issues.filter(issue => issue.state === status)
             }
         }
 

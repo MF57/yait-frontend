@@ -1,0 +1,30 @@
+@import "variables";
+
+#datetimepicker {
+  width: 50%;
+  color: white;
+  background-color: $color-jacarta;
+  border: 1px solid white;
+
+  .btn.btn-primary, td.active {
+    background-color: $color-studio;
+    border-radius: 0;
+  }
+
+  td:hover, th:hover {
+    color: $color-studio;
+    border-radius: 0;
+  }
+
+  td.active:hover {
+    color: white;
+  }
+
+  .glyphicon {
+    color: $color-studio;
+  }
+}
+
+.send-tokens.issue-button {
+  line-height: 23px;
+}

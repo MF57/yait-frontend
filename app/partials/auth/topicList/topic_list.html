@@ -1,8 +1,14 @@
 <button ng-click="vm.showCreateIssuePopup()" class="btn new-issue-button"><i class="glyphicon glyphicon-plus"></i>Add New Issue</button>
-<div class="issues-accordion" id="accordion" role="tablist" aria-multiselectable="true">
-    <div ng-repeat = "issue in vm.issues" class="card">
-        <div class="issue-header card-header" role="tab" id="{{issue.id}}-heading"
-             data-toggle="collapse" data-parent="#accordion" data-target="#{{issue.id}}-collapse"
+<div class="tabs">
+    <div ng-click='vm.changeTab("Opened")' ng-class='{"active-tab": vm.activeTab == "Opened"}' class="issue-tab">Active Issues</div>
+    <div ng-click='vm.changeTab("WorkInProgress")' ng-class='{"active-tab": vm.activeTab == "WorkInProgress"}' class="issue-tab">Work in Progress Issues</div>
+    <div ng-click='vm.changeTab("Resolved")' ng-class='{"active-tab": vm.activeTab == "Resolved"}' class="issue-tab">Resolved Issues</div>
+    <div ng-click='vm.changeTab("WontFix")' ng-class='{"active-tab": vm.activeTab == "WontFix"}' class="issue-tab">Won't Fix Issues</div>
+</div>
+<div ng-show='vm.activeTab == "Opened"' class="issues-accordion" id="openedAccordion" role="tablist" aria-multiselectable="true">
+    <div ng-repeat = "issue in vm.openedIssues" class="card">
+        <div class="issue-header card-header" role="tab" id="{{issue.id}}-heading-opened"
+             data-toggle="collapse" data-parent="#openedAccordion" data-target="#{{issue.id}}-collapse-opened"
              aria-expanded="false" aria-controls="{{issue.id}}-collapse">
             <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
             <div class="align-right">
@@ -11,13 +17,12 @@
                 <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
             </div>
         </div>
-        <div id="{{issue.id}}-collapse" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading">
+        <div id="{{issue.id}}-collapse-opened" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading-opened">
             <div class="issue-body card-block">
                 <h4>Admin Options:</h4>
                 <div class="admin-options" ng-show="vm.isAdmin">
-                    <div ng-show='issue.state == "Opened"' ng-click="vm.startWorkingOnIssue(issue)" class="issue-button">Start Working</div>
-                    <div ng-show='issue.state == "WorkInProgress" || issue.state == "Opened"' ng-click="vm.wontFixIssue(issue)" class="issue-button">Won't Fix</div>
-                    <div ng-show='issue.state == "WorkInProgress"' ng-click="vm.resolveIssue(issue)" class="issue-button">Resolve</div>
+                    <div  ng-click="vm.startWorkingOnIssue(issue)" class="issue-button">Start Working</div>
+                    <div ng-click="vm.wontFixIssue(issue)" class="issue-button">Won't Fix</div>
                 </div>
                 <h4>Created by {{issue.authorId}} on </h4>
                 {{issue.description}}
@@ -26,3 +31,90 @@
     </div>
 
 </div>
+
+
+
+
+
+<div ng-show='vm.activeTab == "WorkInProgress"' class="issues-accordion" id="workInProgressAccordion" role="tablist" aria-multiselectable="true">
+    <div ng-repeat = "issue in vm.workInProgressIssues" class="card">
+        <div class="issue-header card-header" role="tab" id="{{issue.id}}-heading-work"
+             data-toggle="collapse" data-parent="#workInProgressAccordion" data-target="#{{issue.id}}-collapse-work"
+             aria-expanded="false" aria-controls="{{issue.id}}-collapse">
+            <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
+            <div class="align-right">
+                <div class="issue-votes">Votes: {{issue.votes.length}}</div>
+                <div ng-click="vm.goToIssue(issue.id)" class="issue-button">See discussion</div>
+                <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
+            </div>
+        </div>
+        <div id="{{issue.id}}-collapse-work" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading-work">
+            <div class="issue-body card-block">
+                <h4>Admin Options:</h4>
+                <div class="admin-options" ng-show="vm.isAdmin">
+                    <div  ng-click="vm.wontFixIssue(issue)" class="issue-button">Won't Fix</div>
+                    <div  ng-click="vm.resolveIssue(issue)" class="issue-button">Resolve</div>
+                </div>
+                <h4>Created by {{issue.authorId}} on </h4>
+                {{issue.description}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<div ng-show='vm.activeTab == "Resolved"' class="issues-accordion" id="resolvedAccordion" role="tablist" aria-multiselectable="true">
+    <div ng-repeat = "issue in vm.resolvedIssues" class="card">
+        <div class="issue-header card-header" role="tab" id="{{issue.id}}-heading-resolved"
+             data-toggle="collapse" data-parent="#resolvedAccordion" data-target="#{{issue.id}}-collapse-resolved"
+             aria-expanded="false" aria-controls="{{issue.id}}-collapse">
+            <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
+            <div class="align-right">
+                <div class="issue-votes">Votes: {{issue.votes.length}}</div>
+                <div ng-click="vm.goToIssue(issue.id)" class="issue-button">See discussion</div>
+                <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
+            </div>
+        </div>
+        <div id="{{issue.id}}-collapse-resolved" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading-resolved">
+            <div class="issue-body card-block">
+                <h4>Created by {{issue.authorId}} on </h4>
+                {{issue.description}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<div ng-show='vm.activeTab == "WontFix"' class="issues-accordion" id="wontFixAccordion" role="tablist" aria-multiselectable="true">
+    <div ng-repeat = "issue in vm.wontFixIssues" class="card">
+        <div class="issue-header card-header" role="tab" id="{{issue.id}}-heading-wont"
+             data-toggle="collapse" data-parent="#wontFixAccordion" data-target="#{{issue.id}}-collapse-wont"
+             aria-expanded="false" aria-controls="{{issue.id}}-collapse">
+            <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
+            <div class="align-right">
+                <div class="issue-votes">Votes: {{issue.votes.length}}</div>
+                <div ng-click="vm.goToIssue(issue.id)" class="issue-button">See discussion</div>
+                <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
+            </div>
+        </div>
+        <div id="{{issue.id}}-collapse-wont" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading-wont">
+            <div class="issue-body card-block">
+                <h4>Created by {{issue.authorId}} on </h4>
+                {{issue.description}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

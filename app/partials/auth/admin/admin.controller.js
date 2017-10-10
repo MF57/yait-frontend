@@ -25,7 +25,14 @@
         }
 
         function loadAll() {
-            Admin.loadAll().$promise.then(successCallback, failureCallback);
+
+            $('#datetimepicker').datetimepicker({
+                inline: true,
+                sideBySide: true
+            });
+
+
+           // Admin.loadAll().$promise.then(successCallback, failureCallback);
 
 
             function successCallback(data) {

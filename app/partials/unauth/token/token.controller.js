@@ -18,13 +18,15 @@
         }
 
 
-        function vote(issue) {
+        function vote(issue, $event) {
+            $event.stopPropagation();
             Token.vote({token: $stateParams.tokenId}, issue.id).$promise.then(successCallback, failureCallback);
 
 
             function successCallback() {
                 issue.votes.push($scope.token.id);
                 $scope.token.votesLeft -= 1;
+                vm.issues.sort((a,b) => b.votes.length - a.votes.length);
             }
 
             function failureCallback() {
@@ -42,7 +44,7 @@
 
 
             function successCallback(data) {
-                vm.issues = data;
+                vm.issues = data.sort((a,b) => b.votes.length - a.votes.length);
             }
 
             function failureCallback() {
