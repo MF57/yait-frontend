@@ -9,6 +9,7 @@
   .btn.btn-primary, td.active {
     background-color: $color-studio;
     border-radius: 0;
+    border: none;
   }
 
   td:hover, th:hover {
@@ -22,6 +23,10 @@
 
   .glyphicon {
     color: $color-studio;
+  }
+
+  .glyphicon.glyphicon-chevron-up:hover, .glyphicon.glyphicon-chevron-down:hover, .timepicker-hour:hover, .timepicker-minute:hover {
+    border-radius: 0;
   }
 }
 

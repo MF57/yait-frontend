@@ -12,8 +12,9 @@
         vm.sendTokens = sendTokens;
 
         function sendTokens() {
-            vm.token.mails = vm.token.mails.split(",");
-            Admin.createTokens(vm.token).$promise.then(successCallback, failureCallback);
+           vm.token.validUntil = $('#datetimepicker').data("DateTimePicker").date().valueOf();
+           vm.token.mails = vm.token.mails.split(",");
+           Admin.createTokens(vm.token).$promise.then(successCallback, failureCallback);
             function successCallback(data) {
                 alert('Tokens created')
             }
