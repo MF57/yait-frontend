@@ -9,7 +9,7 @@
 
     ApiUrls.$inject = [];
     function ApiUrls() {
-        const authlog = "http://localhost:8080/";
+        const authlog = "http://nat-1.d17.iisg.agh.edu.pl:60673/";
         const backend = "http://nat-1.d17.iisg.agh.edu.pl:60673/";
         const api = "";
         this.backendApi = backend;
