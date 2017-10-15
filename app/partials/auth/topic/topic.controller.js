@@ -7,8 +7,8 @@
         .module('myApp')
         .controller('TopicCtrl', TopicController);
 
-    TopicController.$inject = ['$stateParams', '$state', 'TokenStorage', 'Topic'];
-    function TopicController($stateParams, $state, TokenStorage, Topic) {
+    TopicController.$inject = ['$stateParams', '$state', 'TokenStorage', 'Topic', 'DateFormat'];
+    function TopicController($stateParams, $state, TokenStorage, Topic, DateFormat) {
         const vm = this;
         vm.issue = {};
         vm.newPost = '';
@@ -50,6 +50,7 @@
 
             function issueSuccessCallback(data) {
                 vm.issue = data;
+                vm.issue.creationDate = DateFormat.formatDate(new Date(vm.issue.creationDate));
                 Topic.getPosts($stateParams.topicId)
                     .$promise.then(postsSuccessCallback, failureCallback);
 

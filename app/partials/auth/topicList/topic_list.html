@@ -24,7 +24,7 @@
                     <div  ng-click="vm.startWorkingOnIssue(issue)" class="issue-button">Start Working</div>
                     <div ng-click="vm.wontFixIssue(issue)" class="issue-button">Won't Fix</div>
                 </div>
-                <h4>Created by {{issue.authorId}} on </h4>
+                <h4>Created by {{issue.authorId}} on {{issue.creationDate}}</h4>
                 {{issue.description}}
             </div>
         </div>

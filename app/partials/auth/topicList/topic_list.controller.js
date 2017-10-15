@@ -4,8 +4,8 @@
         .module('myApp')
         .controller('TopicListCtrl', TopicListController);
 
-    TopicListController.$inject = ['TopicList', 'ngDialog', '$state', 'TokenStorage', 'Admin'];
-    function TopicListController(TopicList, ngDialog, $state, TokenStorage, Admin) {
+    TopicListController.$inject = ['TopicList', 'DateFormat', 'ngDialog', '$state', 'TokenStorage', 'Admin'];
+    function TopicListController(TopicList, DateFormat, ngDialog, $state, TokenStorage, Admin) {
         const vm = this;
         vm.isAdmin = TokenStorage.isAdmin();
         vm.login = TokenStorage.decode(TokenStorage.retrieve()).username;
@@ -52,6 +52,7 @@
                         description: newIssue.value.description,
                         authorId: vm.login,
                         state: "Opened",
+                        creationDate: DateFormat.formatDate(new Date()),
                         votes: []
                     };
                     vm.issues.push(result);
@@ -129,6 +130,9 @@
 
             function successCallback(data) {
                 vm.issues = data;
+                vm.issues.forEach(issue => {
+                    issue.creationDate = DateFormat.formatDate(new Date(issue.creationDate));
+                });
                 vm.openedIssues = filterByStatus(data, "Opened").sort((a,b) => b.votes.length - a.votes.length);
                 vm.workInProgressIssues = filterByStatus(data, "WorkInProgress").sort((a,b) => b.votes.length - a.votes.length);
                 vm.wontFixIssues = filterByStatus(data, "WontFix").sort((a,b) => b.votes.length - a.votes.length);

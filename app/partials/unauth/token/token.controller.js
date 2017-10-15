@@ -4,8 +4,8 @@
         .module('myApp')
         .controller('TokenCtrl', TokenController);
 
-    TokenController.$inject = ['Token', '$state', '$stateParams', '$scope'];
-    function TokenController(Token, $state, $stateParams, $scope) {
+    TokenController.$inject = ['Token', '$state', '$stateParams', '$scope', 'DateFormat'];
+    function TokenController(Token, $state, $stateParams, $scope, DateFormat) {
         const vm = this;
         vm.vote = vote;
         vm.canVote = canVote;
@@ -45,6 +45,9 @@
 
             function successCallback(data) {
                 vm.issues = data.sort((a,b) => b.votes.length - a.votes.length);
+                vm.issues.forEach(issue => {
+                    issue.creationDate = DateFormat.formatDate(new Date(issue.creationDate));
+                });
             }
 
             function failureCallback() {

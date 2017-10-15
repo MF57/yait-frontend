@@ -4,9 +4,9 @@
         .module('myApp')
         .controller('TokenTopicCtrl', TokenTopicController);
 
-    TokenTopicController.$inject = ['TokenTopic', '$state', '$stateParams', '$scope'];
+    TokenTopicController.$inject = ['TokenTopic', '$state', '$stateParams', '$scope', 'DateFormat'];
 
-    function TokenTopicController(TokenTopic, $state, $stateParams, $scope) {
+    function TokenTopicController(TokenTopic, $state, $stateParams, $scope, DateFormat) {
         const vm = this;
         vm.vote = vote;
         vm.loadAll = loadAll;
@@ -23,7 +23,7 @@
             TokenTopic.vote({token: $stateParams.tokenId}, $stateParams.topicId).$promise.then(successCallback, failureCallback);
 
             function successCallback(data) {
-                vm.issue.votes.push($scope.token.id);
+                vm.issue.votes.push();
                 $scope.token.votesLeft -= 1;
             }
 
@@ -39,6 +39,7 @@
 
             function issueSuccessCallback(data) {
                 vm.issue = data;
+                vm.issue.creationDate = DateFormat.formatDate(new Date(vm.issue.creationDate));
                 TokenTopic.getPosts($stateParams.topicId)
                     .$promise.then(postsSuccessCallback, failureCallback);
 
