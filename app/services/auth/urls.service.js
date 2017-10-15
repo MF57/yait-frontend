@@ -7,8 +7,8 @@
         .module('AuthModule')
         .service('ApiUrls', ApiUrls);
 
-    ApiUrls.$inject = [];
-    function ApiUrls() {
+    ApiUrls.$inject = ['$http'];
+    function ApiUrls($http) {
         const authlog = "http://nat-1.d17.iisg.agh.edu.pl:60673/";
         const backend = "http://nat-1.d17.iisg.agh.edu.pl:60673/";
         const api = "";
