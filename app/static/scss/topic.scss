@@ -41,6 +41,7 @@
   padding: 20px;
   margin-bottom: 10px;
   background-color: white;
+  white-space: pre-wrap;
 }
 
 .create-new-post-layout {
@@ -51,10 +52,9 @@
 }
 
 .new-post-input {
-  height: 100px;
+  min-height: 100px;
   margin-bottom: 20px;
   width: 80%;
-  text-indent: 10px;
 }
 
 .new-post-button {

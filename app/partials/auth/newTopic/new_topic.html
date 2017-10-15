@@ -4,7 +4,7 @@
         FIELDS CANNOT BE EMPTY
     </div>
     <input ng-model="vm.title" type="text" class="form-control welcome-dialog-input new-issue-input" placeholder="Title">
-    <input ng-model="vm.description" class="form-control welcome-dialog-input new-issue-input description-input" placeholder="Description">
+    <textarea ng-model="vm.description" class="form-control welcome-dialog-input new-issue-input description-input" placeholder="Description"></textarea>
     <button ng-click="vm.createIssue()" class="btn welcome-button welcome-dialog-button">Create Issue</button>
 </div>
 <!--<div ng-show='vm.loginSuccessful' class="successful-popup">-->

@@ -5,7 +5,7 @@
 </div>
 <div class="issue-view-description">
     <h4>Created by {{vm.issue.authorId}} on {{vm.issue.creationDate}}</h4>
-    {{vm.issue.description}}
+    <div class="issue-description">{{vm.issue.description}}</div>
 </div>
 
 <div class="post-badge" ng-repeat="post in vm.posts">
@@ -15,8 +15,8 @@
 
 
 <div class="create-new-post-layout">
-    <input ng-hide="vm.hasAlreadyCommented" ng-model="vm.newPost" type="text" class="new-post-input"
-           placeholder="Your comment">
+    <textarea ng-hide="vm.hasAlreadyCommented" ng-model="vm.newPost" class="new-post-input"
+              placeholder="Your comment"></textarea>
     <button ng-hide="vm.hasAlreadyCommented" ng-click="vm.addPost()" class="btn new-post-button">Add Comment</button>
     <h3 ng-show="vm.hasAlreadyCommented">You have already commented in this issue</h3>
 </div>

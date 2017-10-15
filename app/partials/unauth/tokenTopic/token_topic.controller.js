@@ -23,7 +23,7 @@
             TokenTopic.vote({token: $stateParams.tokenId}, $stateParams.topicId).$promise.then(successCallback, failureCallback);
 
             function successCallback(data) {
-                vm.issue.votes.push();
+                vm.issue.votes.push($scope.token.id);
                 $scope.token.votesLeft -= 1;
             }
 
