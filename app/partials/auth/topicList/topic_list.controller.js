@@ -37,31 +37,8 @@
                 width: "100%"
             });
             dialog.closePromise.then((newIssue) => {
-                if (newIssue.value.title !== "" && newIssue.value.description) {
-                    TopicList.create({
-                        title: newIssue.value.title,
-                        description: newIssue.value.description,
-                        authorId: vm.login
-                    }).$promise.then(successCallback, failureCallback);
-                }
-
-                function successCallback(data) {
-                    let result = {
-                        id: data.content,
-                        title: newIssue.value.title,
-                        description: newIssue.value.description,
-                        authorId: vm.login,
-                        state: "Opened",
-                        creationDate: DateFormat.formatDate(new Date()),
-                        votes: []
-                    };
-                    vm.issues.push(result);
-                    vm.openedIssues.push(result);
-                }
-
-                function failureCallback(error) {
-                    console.log("Error while retrieving data")
-                }
+                vm.issues.push(newIssue.value);
+                vm.openedIssues.push(newIssue.value);
             })
         }
 

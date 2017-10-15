@@ -1,13 +1,17 @@
-<div ng-hide='vm.loginSuccessful' class="new-issue-form input-group login-form">
+<div ng-hide='vm.issueCreatedSuccessfully' class="new-issue-form input-group login-form">
     <div class="error-message" ng-class="{'invisible': !vm.formValidation}">
         <i class="glyphicon glyphicon-alert"></i>
         FIELDS CANNOT BE EMPTY
+    </div>
+    <div class="error-message" ng-class="{'invisible': !vm.serverValidation}">
+        <i class="glyphicon glyphicon-alert"></i>
+        CANNOT CREATE AN ISSUE
     </div>
     <input ng-model="vm.title" type="text" class="form-control welcome-dialog-input new-issue-input" placeholder="Title">
     <textarea ng-model="vm.description" class="form-control welcome-dialog-input new-issue-input description-input" placeholder="Description"></textarea>
     <button ng-click="vm.createIssue()" class="btn welcome-button welcome-dialog-button">Create Issue</button>
 </div>
-<!--<div ng-show='vm.loginSuccessful' class="successful-popup">-->
-    <!--<i class="glyphicon glyphicon-ok"></i>-->
-    <!--<div>ISSUE SUCCESSFULLY CREATED</div>-->
-<!--</div>-->
+<div ng-show='vm.issueCreatedSuccessfully' class="successful-popup">
+    <i class="glyphicon glyphicon-ok"></i>
+    <div>ISSUE CREATED <br><br><br> SUCCESSFULLY</div>
+</div>
