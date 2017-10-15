@@ -14,7 +14,7 @@
 
 
         function goToWelcome() {
-            $state.go("welcome");
+            $state.go("Token", {'tokenId': $stateParams.tokenId});
         }
 
 

@@ -52,11 +52,6 @@
                 vm.loginFailed = true;
                 TokenStorage.clear();
                 vm.loginSuccessful = false;
-                $timeout(function () {
-                    ngDialog.close();
-                    vm.loginSuccessful = false;
-                    $state.go("welcome");
-                }, 1000);
             }
         }
 
