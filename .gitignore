@@ -50,5 +50,5 @@ dist
 .sass-cache/
 app/static/css/
 
-application.properties
+config.js
 

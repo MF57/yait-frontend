@@ -7,14 +7,19 @@
         .module('AuthModule')
         .service('ApiUrls', ApiUrls);
 
-    ApiUrls.$inject = ['$http'];
-    function ApiUrls($http) {
-        const authlog = "http://nat-1.d17.iisg.agh.edu.pl:60673/";
-        const backend = "http://nat-1.d17.iisg.agh.edu.pl:60673/";
-        const api = "";
-        this.backendApi = backend;
-        this.authlogApi = authlog + api;
-        return this;
+    ApiUrls.$inject = [];
+    function ApiUrls() {
+        var self = this;
+        const backendUrl = "http://localhost:8080/";
+
+        self.backendApi = backendUrl;
+        self.authlogApi = backendUrl;
+
+        if (typeof window.backendUrl !== 'undefined') {
+            self.backendApi = window.backendUrl;
+            self.authlogApi = window.backendUrl;
+        }
+        return self;
     }
 
 })();
