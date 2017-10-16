@@ -52,7 +52,10 @@
         }
 
         function reject() {
-            ngDialog.close();
+            ngDialog.close('',
+                {
+                    result: false
+                });
         }
 
 

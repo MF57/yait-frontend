@@ -1,0 +1,16 @@
+<div ng-hide='vm.successAction' class="new-issue-form input-group login-form">
+    <div class="error-message" ng-class="{'invisible': !vm.serverValidation}">
+        <i class="glyphicon glyphicon-alert"></i>
+        CANNOT SEND TOKENS
+    </div>
+    <div class="confirmation-info">ARE YOU SURE YOU WANT TO SENT TOKENS?</div>
+    <div class="confirmation-detail">(THIS MAY TAKE A WHILE)</div>
+    <div class="button-wrapper">
+        <button ng-click="vm.confirm()" class="btn welcome-button welcome-dialog-button">YES</button>
+        <button ng-click="vm.reject()" class="btn welcome-button welcome-dialog-button">NO</button>
+    </div>
+</div>
+<div ng-show='vm.successAction' class="successful-popup">
+    <i class="glyphicon glyphicon-ok"></i>
+    <div>TOKENS SENT <br><br><br> SUCCESSFULLY</div>
+</div>
