@@ -18,6 +18,7 @@
         function confirm() {
             vm.serverValidation = false;
 
+            Admin.createTokens(vm.token).$promise.then(successCallback, failureCallback);
 
             function successCallback() {
                 vm.successAction = true;
@@ -29,9 +30,6 @@
 
             function failureCallback(error) {
                 vm.serverValidation = true;
-                $timeout(function () {
-                    ngDialog.close();
-                }, 1000);
                 console.log("Error while retrieving data")
             }
         }

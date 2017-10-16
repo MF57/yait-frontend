@@ -16,6 +16,10 @@
            vm.token.validUntil = $('#datetimepicker').data("DateTimePicker").date().valueOf();
            vm.token.mails = vm.mails.split(",");
 
+           if (new Date().valueOf() > vm.token.validUntil || vm.token.mails.length <= 0 || vm.token.votes <= 0) {
+               return;
+           }
+
             const dialog = ngDialog.open({
                 controller: "SendTokensCtrl",
                 controllerAs: "vm",
