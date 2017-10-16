@@ -11,7 +11,7 @@
         $stateProvider
             .state('Token', {
                 url:"/topicList",
-                templateUrl: "partials/unauth/token/Token.html",
+                templateUrl: "partials/unauth/token/token.html",
                 controller: "TokenCtrl",
                 controllerAs: "vm",
                 parent:"token",
