@@ -20,8 +20,21 @@
             }).query();
         }
 
-        function createTokens(token) {
+        function createTokensForMails(token) {
             return $resource(tokenUrl + "mails", {}, {
+                'create': {
+                    method: 'POST',
+                    isArray: false,
+                    responseType: 'text',
+                    transformResponse: function (data, headersGetter, status) {
+                        return {content: data};
+                    }
+                }
+            }).create(token);
+        }
+
+        function createTokensForGroups(token) {
+            return $resource(tokenUrl + "groups", {}, {
                 'create': {
                     method: 'POST',
                     isArray: false,
@@ -60,7 +73,8 @@
 
         return {
             loadAll: loadAll,
-            createTokens: createTokens,
+            createTokensForMails: createTokensForMails,
+            createTokensForGroups: createTokensForGroups,
             open: open,
             wontFix: wontFix,
             resolve: resolve

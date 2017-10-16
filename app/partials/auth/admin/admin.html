@@ -2,9 +2,18 @@
 
 <input ng-model="vm.token.votes" type="number" min="1" class="form-control welcome-dialog-input" placeholder="Number of points for token">
 <br>
+<h4>Paste mails here</h4>
 <textarea ng-model="vm.mails" class="form-control welcome-dialog-input" placeholder="Mails (separated by commas)"></textarea>
 <br>
-<div ng-repeat="group in vm.groups">{{group}}</div>
+<div>or</div>
+<h4>Select LDAP groups (if any checkbox is selected, above mails input will be ignored):</h4>
+<div class="groups-wrapper">
+    <div ng-repeat="group in vm.groups" class="checkbox">
+        <label><input  ng-click="vm.toggleGroup(group)" type="checkbox" value="">{{group}}</label>
+    </div>
+</div>
+
+<div>Select tokens expiring time:</div>
 <div id="datetimepicker"></div>
 <br>
 <div class="send-tokens-wrapper">
