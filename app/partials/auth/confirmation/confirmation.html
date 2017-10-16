@@ -1,0 +1,15 @@
+<div ng-hide='vm.successAction' class="new-issue-form input-group login-form">
+    <div class="error-message" ng-class="{'invisible': !vm.serverValidation}">
+        <i class="glyphicon glyphicon-alert"></i>
+        CANNOT CREATE AN ISSUE
+    </div>
+    <div class="confirmation-info">ARE YOU SURE YOU WANT TO CHANGE STATE OF THIS ISSUE TO: "{{vm.newState}}"?</div>
+    <div class="button-wrapper">
+        <button ng-click="" class="btn welcome-button welcome-dialog-button">YES</button>
+        <button ng-click="" class="btn welcome-button welcome-dialog-button">NO</button>
+    </div>
+</div>
+<div ng-show='vm.successAction' class="successful-popup">
+    <i class="glyphicon glyphicon-ok"></i>
+    <div>ISSUE CREATED <br><br><br> SUCCESSFULLY</div>
+</div>

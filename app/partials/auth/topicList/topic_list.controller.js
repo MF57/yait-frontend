@@ -48,50 +48,80 @@
         }
 
         function startWorkingOnIssue(issue) {
-            Admin.open(issue.id).$promise.then(successCallback, failureCallback);
-
-
-            function successCallback(data) {
-                issue.state = "WorkInProgress";
-                removeIssue(vm.openedIssues, issue);
-                vm.workInProgressIssues.push(issue);
-            }
-
-            function failureCallback(error) {
-                console.log("Error while retrieving data")
-            }
+            ngDialog.open({
+                controller: "ConfirmationCtrl",
+                controllerAs: "vm",
+                template: "partials/auth/confirmation/confirmation.html",
+                className: "ngdialog-theme-default welcome-dialog confirmation-dialog",
+                width: "100%",
+                data: {
+                    newState: 'WORK IN PROGRESS'
+                }
+            });
+            // Admin.open(issue.id).$promise.then(successCallback, failureCallback);
+            //
+            //
+            // function successCallback(data) {
+            //     issue.state = "WorkInProgress";
+            //     removeIssue(vm.openedIssues, issue);
+            //     vm.workInProgressIssues.push(issue);
+            // }
+            //
+            // function failureCallback(error) {
+            //     console.log("Error while retrieving data")
+            // }
         }
 
         function wontFixIssue(issue) {
-            Admin.wontFix(issue.id).$promise.then(successCallback, failureCallback);
-
-
-            function successCallback(data) {
-                issue.state = "WontFix";
-                removeIssue(vm.workInProgressIssues, issue);
-                removeIssue(vm.openedIssues, issue);
-                vm.wontFixIssues.push(issue);
-            }
-
-            function failureCallback(error) {
-                console.log("Error while retrieving data")
-            }
+            ngDialog.open({
+                controller: "ConfirmationCtrl",
+                controllerAs: "vm",
+                template: "partials/auth/confirmation/confirmation.html",
+                className: "ngdialog-theme-default welcome-dialog confirmation-dialog",
+                width: "100%",
+                data: {
+                    newState: "WON'T FIX"
+                }
+            });
+            // Admin.wontFix(issue.id).$promise.then(successCallback, failureCallback);
+            //
+            //
+            // function successCallback(data) {
+            //     issue.state = "WontFix";
+            //     removeIssue(vm.workInProgressIssues, issue);
+            //     removeIssue(vm.openedIssues, issue);
+            //     vm.wontFixIssues.push(issue);
+            // }
+            //
+            // function failureCallback(error) {
+            //     console.log("Error while retrieving data")
+            // }
         }
 
         function resolveIssue(issue) {
-            Admin.resolve(issue.id).$promise.then(successCallback, failureCallback);
-
-
-            function successCallback(data) {
-                issue.state = "Closed";
-                removeIssue(vm.workInProgressIssues, issue);
-                vm.resolvedIssues.push(issue);
-
-            }
-
-            function failureCallback(error) {
-                console.log("Error while retrieving data")
-            }
+            ngDialog.open({
+                controller: "ConfirmationCtrl",
+                controllerAs: "vm",
+                template: "partials/auth/confirmation/confirmation.html",
+                className: "ngdialog-theme-default welcome-dialog confirmation-dialog",
+                width: "100%",
+                data: {
+                    newState: "RESOLVED"
+                }
+            });
+            // Admin.resolve(issue.id).$promise.then(successCallback, failureCallback);
+            //
+            //
+            // function successCallback(data) {
+            //     issue.state = "Closed";
+            //     removeIssue(vm.workInProgressIssues, issue);
+            //     vm.resolvedIssues.push(issue);
+            //
+            // }
+            //
+            // function failureCallback(error) {
+            //     console.log("Error while retrieving data")
+            // }
         }
 
         function removeIssue(issues, issue) {
