@@ -4,6 +4,7 @@
 <br>
 <textarea ng-model="vm.mails" class="form-control welcome-dialog-input" placeholder="Mails (separated by commas)"></textarea>
 <br>
+<div ng-repeat="group in vm.groups">{{group}}</div>
 <div id="datetimepicker"></div>
 <br>
 <div class="send-tokens-wrapper">

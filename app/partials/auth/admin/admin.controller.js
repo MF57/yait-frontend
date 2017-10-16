@@ -12,6 +12,7 @@
         vm.token = {};
         vm.sendTokens = sendTokens;
         vm.validation = false;
+        vm.groups = [];
 
         function sendTokens() {
             vm.validation = false;
@@ -45,10 +46,11 @@
             });
 
 
-           // Admin.loadAll().$promise.then(successCallback, failureCallback);
+            Admin.loadAll().$promise.then(successCallback, failureCallback);
 
 
             function successCallback(data) {
+                vm.groups = data.groups;
             }
 
             function failureCallback(error) {

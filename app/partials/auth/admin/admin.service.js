@@ -9,10 +9,14 @@
     function AdminService(ApiUrls, $resource) {
         const tokenUrl = ApiUrls.backendApi + "tokens/";
         const topicUrl = ApiUrls.backendApi + "topics/";
+        const baseUrl = ApiUrls.backendApi;
 
         function loadAll() {
-            return $resource(tokenUrl, {}, {
-                'query': { method: 'GET'}
+            return $resource(baseUrl + "groups/", {}, {
+                'query': {
+                    method: 'GET',
+                    isArray: false
+                }
             }).query();
         }
 
