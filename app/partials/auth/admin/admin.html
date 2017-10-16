@@ -1,9 +1,13 @@
 <h1>Generate Tokens</h1>
 
-<input ng-model="vm.token.votes" type="number" class="form-control welcome-dialog-input" placeholder="Number of points for token">
+<input ng-model="vm.token.votes" type="number" min="1" class="form-control welcome-dialog-input" placeholder="Number of points for token">
 <br>
-<input ng-model="vm.mails" type="text" class="form-control welcome-dialog-input" placeholder="Mails">
+<textarea ng-model="vm.mails" class="form-control welcome-dialog-input" placeholder="Mails (separated by commas)"></textarea>
 <br>
 <div id="datetimepicker"></div>
 <br>
-<button ng-click='vm.sendTokens()' class="send-tokens issue-button">Send Tokens</button>
+<div class="send-tokens-wrapper">
+    <button ng-click='vm.sendTokens()' class="send-tokens issue-button">Send Tokens</button>
+    <div class="error-message" ng-show="vm.validation"> <i class="glyphicon glyphicon-alert"></i>THERE ARE ERRORS - TOKENS CANNOT BE SENT</div>
+</div>
+

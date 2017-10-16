@@ -11,16 +11,19 @@
         vm.mails = "";
         vm.token = {};
         vm.sendTokens = sendTokens;
+        vm.validation = false;
 
         function sendTokens() {
+            vm.validation = false;
            vm.token.validUntil = $('#datetimepicker').data("DateTimePicker").date().valueOf();
            vm.token.mails = vm.mails.split(",");
 
            if (new Date().valueOf() > vm.token.validUntil || vm.token.mails.length <= 0 || vm.token.votes <= 0) {
+               vm.validation = true;
                return;
            }
 
-            const dialog = ngDialog.open({
+            ngDialog.open({
                 controller: "SendTokensCtrl",
                 controllerAs: "vm",
                 template: "partials/auth/admin/sendTokens/send_tokens.html",
@@ -31,14 +34,6 @@
                 }
             });
 
-           // Admin.createTokens(vm.token).$promise.then(successCallback, failureCallback);
-           //  function successCallback(data) {
-           //      alert('Tokens created')
-           //  }
-           //
-           //  function failureCallback(error) {
-           //      console.log("Error while retrieving data")
-           //  }
 
         }
 
