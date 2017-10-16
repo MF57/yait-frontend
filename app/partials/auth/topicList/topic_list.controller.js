@@ -5,6 +5,7 @@
         .controller('TopicListCtrl', TopicListController);
 
     TopicListController.$inject = ['TopicList', 'DateFormat', 'ngDialog', '$state', 'TokenStorage', 'Admin'];
+
     function TopicListController(TopicList, DateFormat, ngDialog, $state, TokenStorage, Admin) {
         const vm = this;
         vm.isAdmin = TokenStorage.isAdmin();
@@ -43,85 +44,75 @@
         }
 
         function goToIssue(issueId) {
-            $state.go('Topic', {'topicId' : issueId})
+            $state.go('Topic', {'topicId': issueId})
 
         }
 
         function startWorkingOnIssue(issue) {
-            ngDialog.open({
+            const dialog = ngDialog.open({
                 controller: "ConfirmationCtrl",
                 controllerAs: "vm",
                 template: "partials/auth/confirmation/confirmation.html",
                 className: "ngdialog-theme-default welcome-dialog confirmation-dialog",
                 width: "100%",
                 data: {
-                    newState: 'WORK IN PROGRESS'
+                    newState: 'WORK IN PROGRESS',
+                    issueId: issue.id
                 }
             });
-            // Admin.open(issue.id).$promise.then(successCallback, failureCallback);
-            //
-            //
-            // function successCallback(data) {
-            //     issue.state = "WorkInProgress";
-            //     removeIssue(vm.openedIssues, issue);
-            //     vm.workInProgressIssues.push(issue);
-            // }
-            //
-            // function failureCallback(error) {
-            //     console.log("Error while retrieving data")
-            // }
+            dialog.closePromise.then((dialogResult) => {
+                if (dialogResult.value.result) {
+                    issue.state = "WorkInProgress";
+                    removeIssue(vm.openedIssues, issue);
+                    vm.workInProgressIssues.push(issue);
+                }
+            })
         }
 
         function wontFixIssue(issue) {
-            ngDialog.open({
+            const dialog = ngDialog.open({
                 controller: "ConfirmationCtrl",
                 controllerAs: "vm",
                 template: "partials/auth/confirmation/confirmation.html",
                 className: "ngdialog-theme-default welcome-dialog confirmation-dialog",
                 width: "100%",
                 data: {
-                    newState: "WON'T FIX"
+                    newState: "WON'T FIX",
+                    issueId: issue.id
                 }
             });
-            // Admin.wontFix(issue.id).$promise.then(successCallback, failureCallback);
-            //
-            //
-            // function successCallback(data) {
-            //     issue.state = "WontFix";
-            //     removeIssue(vm.workInProgressIssues, issue);
-            //     removeIssue(vm.openedIssues, issue);
-            //     vm.wontFixIssues.push(issue);
-            // }
-            //
-            // function failureCallback(error) {
-            //     console.log("Error while retrieving data")
-            // }
+
+            dialog.closePromise.then((dialogResult) => {
+                if (dialogResult.value.result) {
+                    issue.state = "WontFix";
+                    removeIssue(vm.workInProgressIssues, issue);
+                    removeIssue(vm.openedIssues, issue);
+                    vm.wontFixIssues.push(issue);
+                }
+            })
+
         }
 
         function resolveIssue(issue) {
-            ngDialog.open({
+            const dialog = ngDialog.open({
                 controller: "ConfirmationCtrl",
                 controllerAs: "vm",
                 template: "partials/auth/confirmation/confirmation.html",
                 className: "ngdialog-theme-default welcome-dialog confirmation-dialog",
                 width: "100%",
                 data: {
-                    newState: "RESOLVED"
+                    newState: "RESOLVED",
+                    issueId: issue.id
                 }
             });
-            // Admin.resolve(issue.id).$promise.then(successCallback, failureCallback);
-            //
-            //
-            // function successCallback(data) {
-            //     issue.state = "Closed";
-            //     removeIssue(vm.workInProgressIssues, issue);
-            //     vm.resolvedIssues.push(issue);
-            //
-            // }
-            //
-            // function failureCallback(error) {
-            //     console.log("Error while retrieving data")
-            // }
+
+            dialog.closePromise.then((dialogResult) => {
+                if (dialogResult.value.result) {
+                    issue.state = "Closed";
+                    removeIssue(vm.workInProgressIssues, issue);
+                    vm.resolvedIssues.push(issue);
+                }
+            })
         }
 
         function removeIssue(issues, issue) {
@@ -140,10 +131,10 @@
                 vm.issues.forEach(issue => {
                     issue.creationDate = DateFormat.formatDate(new Date(issue.creationDate));
                 });
-                vm.openedIssues = filterByStatus(data, "Opened").sort((a,b) => b.votes.length - a.votes.length);
-                vm.workInProgressIssues = filterByStatus(data, "WorkInProgress").sort((a,b) => b.votes.length - a.votes.length);
-                vm.wontFixIssues = filterByStatus(data, "WontFix").sort((a,b) => b.votes.length - a.votes.length);
-                vm.resolvedIssues = filterByStatus(data, "Closed").sort((a,b) => b.votes.length - a.votes.length);
+                vm.openedIssues = filterByStatus(data, "Opened").sort((a, b) => b.votes.length - a.votes.length);
+                vm.workInProgressIssues = filterByStatus(data, "WorkInProgress").sort((a, b) => b.votes.length - a.votes.length);
+                vm.wontFixIssues = filterByStatus(data, "WontFix").sort((a, b) => b.votes.length - a.votes.length);
+                vm.resolvedIssues = filterByStatus(data, "Closed").sort((a, b) => b.votes.length - a.votes.length);
             }
 
             function failureCallback(error) {
