@@ -44,10 +44,11 @@
                     .$promise.then(postsSuccessCallback, failureCallback);
 
                 function postsSuccessCallback(data) {
-                    vm.posts = data;
+                    vm.posts = data.sort((a, b) => a.creationDate - b.creationDate);
                     if (vm.posts.filter(post => post.authorId === vm.login).length === 0) {
                         vm.hasAlreadyCommented = false;
                     }
+                    vm.posts.forEach(post => post.creationDate = DateFormat.formatDate(new Date(post.creationDate)))
 
 
                 }
