@@ -55,7 +55,7 @@
                     <div  ng-click="vm.wontFixIssue(issue)" class="issue-button">Won't Fix</div>
                     <div  ng-click="vm.resolveIssue(issue)" class="issue-button">Resolve</div>
                 </div>
-                <h4>Created by {{issue.authorId}} on </h4>
+                <h4>Created by {{issue.authorId}} on {{issue.creationDate}}</h4>
                 {{issue.description}}
             </div>
         </div>
@@ -83,7 +83,7 @@
         </div>
         <div id="{{issue.id}}-collapse-resolved" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading-resolved">
             <div class="issue-body card-block">
-                <h4>Created by {{issue.authorId}} on </h4>
+                <h4>Created by {{issue.authorId}} on {{issue.creationDate}} </h4>
                 {{issue.description}}
             </div>
         </div>
@@ -109,7 +109,7 @@
         </div>
         <div id="{{issue.id}}-collapse-wont" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading-wont">
             <div class="issue-body card-block">
-                <h4>Created by {{issue.authorId}} on </h4>
+                <h4>Created by {{issue.authorId}} on {{issue.creationDate}}</h4>
                 {{issue.description}}
             </div>
         </div>

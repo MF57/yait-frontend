@@ -4,15 +4,16 @@
         .module('myApp')
         .controller('NewTopicCtrl', NewTopicController);
 
-    NewTopicController.$inject = ['ngDialog', 'TopicList', 'DateFormat', '$timeout'];
+    NewTopicController.$inject = ['ngDialog', 'TopicList', 'DateFormat', '$timeout', 'TokenStorage'];
 
-    function NewTopicController(ngDialog, TopicList, DateFormat, $timeout) {
+    function NewTopicController(ngDialog, TopicList, DateFormat, $timeout, TokenStorage) {
         const vm = this;
         vm.title = '';
         vm.description = '';
         vm.formValidation = false;
         vm.serverValidation = false;
         vm.issueCreatedSuccessfully = false;
+        vm.login = TokenStorage.decode(TokenStorage.retrieve()).username;
         vm.createIssue = createIssue;
 
 

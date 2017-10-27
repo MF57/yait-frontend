@@ -4,7 +4,7 @@
         INCORRECT CREDENTIALS
     </div>
     <input ng-model="vm.login" type="text" class="form-control welcome-dialog-input" placeholder="Login">
-    <input ng-model="vm.password" type="password" class="form-control welcome-dialog-input" placeholder="Password">
+    <input ng-keyup="$event.keyCode === 13 ? vm.loginFunction() : null" ng-model="vm.password" type="password" class="form-control welcome-dialog-input" placeholder="Password">
     <button ng-click="vm.loginFunction()" class="btn welcome-button welcome-dialog-button">Login</button>
 </div>
 <div ng-show='vm.loginSuccessful' class="successful-popup">

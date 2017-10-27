@@ -38,8 +38,10 @@
                 width: "100%"
             });
             dialog.closePromise.then((newIssue) => {
-                vm.issues.push(newIssue.value);
-                vm.openedIssues.push(newIssue.value);
+                if (typeof newIssue.value.id !== "undefined") {
+                    vm.issues.push(newIssue.value);
+                    vm.openedIssues.push(newIssue.value);
+                }
             })
         }
 
@@ -131,10 +133,10 @@
                 vm.issues.forEach(issue => {
                     issue.creationDate = DateFormat.formatDate(new Date(issue.creationDate));
                 });
-                vm.openedIssues = filterByStatus(data, "Opened").sort((a, b) => b.votes.length - a.votes.length);
-                vm.workInProgressIssues = filterByStatus(data, "WorkInProgress").sort((a, b) => b.votes.length - a.votes.length);
-                vm.wontFixIssues = filterByStatus(data, "WontFix").sort((a, b) => b.votes.length - a.votes.length);
-                vm.resolvedIssues = filterByStatus(data, "Closed").sort((a, b) => b.votes.length - a.votes.length);
+                vm.openedIssues = filterByStatus(vm.issues, "Opened").sort((a, b) => b.votes.length - a.votes.length);
+                vm.workInProgressIssues = filterByStatus(vm.issues, "WorkInProgress").sort((a, b) => b.votes.length - a.votes.length);
+                vm.wontFixIssues = filterByStatus(vm.issues, "WontFix").sort((a, b) => b.votes.length - a.votes.length);
+                vm.resolvedIssues = filterByStatus(vm.issues, "Closed").sort((a, b) => b.votes.length - a.votes.length);
             }
 
             function failureCallback(error) {

@@ -60,7 +60,8 @@
 
             $('#datetimepicker').datetimepicker({
                 inline: true,
-                sideBySide: true
+                sideBySide: true,
+                format: "DD/MM/YYYY HH:mm"
             });
 
 
