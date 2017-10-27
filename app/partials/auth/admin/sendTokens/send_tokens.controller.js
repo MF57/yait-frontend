@@ -10,6 +10,7 @@
         const vm = this;
         vm.serverValidation = false;
         vm.successAction = false;
+        vm.sendingInProgress = false;
         vm.token = $scope.ngDialogData.token;
         vm.groups = $scope.ngDialogData.groups;
         vm.reject = reject;
@@ -18,6 +19,8 @@
 
         function confirm() {
             vm.serverValidation = false;
+            vm.sendingInProgress = true;
+            $(".ngdialog-close").hide();
 
             if (vm.groups.length === 0) {
                 Admin.createTokensForMails(vm.token).$promise.then(successCallback, failureCallback);
@@ -30,6 +33,8 @@
             }
 
             function successCallback() {
+                vm.sendingInProgress = false;
+                $(".ngdialog-close").show();
                 vm.successAction = true;
                 $timeout(function() {
                     ngDialog.close();
@@ -38,6 +43,8 @@
 
 
             function failureCallback(error) {
+                vm.sendingInProgress = false;
+                $(".ngdialog-close").show();
                 vm.serverValidation = true;
                 console.log("Error while retrieving data")
             }
