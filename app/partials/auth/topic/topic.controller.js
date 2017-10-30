@@ -21,7 +21,7 @@
         function addPost() {
             console.log(TokenStorage.decode(TokenStorage.retrieve()));
             Topic.createPost({
-                authorId: vm.login,
+                authorId: vm.userId,
                 content: vm.newPost
             }, vm.issue.id).$promise.then(successCallback, failureCallback);
 
