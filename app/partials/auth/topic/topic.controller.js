@@ -13,6 +13,7 @@
         vm.issue = {};
         vm.newPost = '';
         vm.login = TokenStorage.decode(TokenStorage.retrieve()).username;
+        vm.userId = TokenStorage.decode(TokenStorage.retrieve()).userId;
         vm.hasAlreadyCommented = true;
         vm.posts = [];
         vm.addPost = addPost;
@@ -29,7 +30,8 @@
                 vm.posts.push({
                     id: data,
                     topicId: vm.issue.id,
-                    authorId: vm.login,
+                    authorId: vm.userId,
+                    authorLogin: vm.login,
                     content: vm.newPost,
                     creationDate:  DateFormat.formatDate(new Date()),
                     votes: []
@@ -57,7 +59,7 @@
 
                 function postsSuccessCallback(data) {
                     vm.posts = data.sort((a, b) => a.creationDate - b.creationDate);
-                    if (vm.posts.filter(post => post.authorId === vm.login).length === 0) {
+                    if (vm.posts.filter(post => post.authorId === vm.userId).length === 0) {
                         vm.hasAlreadyCommented = false;
                     }
                     vm.posts.forEach(post => post.creationDate = DateFormat.formatDate(new Date(post.creationDate)))
