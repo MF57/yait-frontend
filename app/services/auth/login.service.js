@@ -27,7 +27,7 @@
             }).query();
         }
 
-        const loginRemoteUrl = ApiUrls.authlogApi + "/login/remoteUser";
+        const loginRemoteUrl = ApiUrls.authlogApi + "login/remoteUser";
 
 
         function loginRemote() {
