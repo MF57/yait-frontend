@@ -12,7 +12,8 @@
     function LoginService ($resource, TokenStorage, ApiUrls) {
         const service = {
             login: login,
-            logout: logout
+            logout: logout,
+            loginRemote: loginRemote
         };
 
         const loginUrl = ApiUrls.authlogApi + "login/credentials";
@@ -22,6 +23,17 @@
                 'query': {
                     method: 'GET',
                     headers: {"Authorization": btoa(login + ":" + password)}
+                }
+            }).query();
+        }
+
+        const loginRemoteUrl = ApiUrls.authlogApi + "/login/remoteUser";
+
+
+        function loginRemote() {
+            return $resource(loginRemoteUrl, {}, {
+                'query': {
+                    method: 'GET',
                 }
             }).query();
         }

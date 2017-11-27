@@ -21,15 +21,28 @@
 
 
         function showLoginPopup() {
-            vm.blurry = true;
-            const dialog = ngDialog.open({
-                controller: "WelcomeController",
-                controllerAs: "vm",
-                template: "partials/unauth/login/login.html",
-                className: "ngdialog-theme-default welcome-dialog",
-                width: "100%"
-            });
-            dialog.closePromise.then(() => vm.blurry = false)
+
+            LoginService.loginRemote()
+                .$promise.then(successCallback, failureCallback);
+
+
+            function successCallback(result) {
+                TokenStorage.store(result.token);
+                $state.go("TopicList");
+            }
+
+            function failureCallback() {
+                vm.blurry = true;
+                const dialog = ngDialog.open({
+                    controller: "WelcomeController",
+                    controllerAs: "vm",
+                    template: "partials/unauth/login/login.html",
+                    className: "ngdialog-theme-default welcome-dialog",
+                    width: "100%"
+                });
+                dialog.closePromise.then(() => vm.blurry = false)
+            }
+
         }
 
         function loginFunction() {
