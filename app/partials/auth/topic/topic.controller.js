@@ -17,6 +17,13 @@
         vm.hasAlreadyCommented = true;
         vm.posts = [];
         vm.addPost = addPost;
+        vm.tokenSize = tokenSize;
+
+        function tokenSize(votes) {
+            const tokens = new Set(votes);
+            return tokens.size;
+        }
+
 
         function addPost() {
             console.log(TokenStorage.decode(TokenStorage.retrieve()));

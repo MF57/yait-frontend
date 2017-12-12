@@ -17,6 +17,7 @@
         vm.resolveIssue = resolveIssue;
         vm.wontFixIssue = wontFixIssue;
         vm.changeTab = changeTab;
+        vm.tokenSize = tokenSize;
         vm.issues = [];
         vm.openedIssues = [];
         vm.workInProgressIssues = [];
@@ -26,6 +27,11 @@
 
         function changeTab(tab) {
             vm.activeTab = tab;
+        }
+
+        function tokenSize(votes) {
+            const tokens = new Set(votes);
+            return tokens.size;
         }
 
 

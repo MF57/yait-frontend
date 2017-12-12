@@ -12,7 +12,7 @@
              aria-expanded="false" aria-controls="{{issue.id}}-collapse">
             <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
             <div class="align-right">
-                <div class="issue-votes">Votes: {{issue.votes.length}}</div>
+                <div class="issue-votes">Votes: {{issue.votes.length}} <span ng-show="vm.isAdmin"> from  {{tokenSize(issue.votes)}} tokens</span></div>
                 <div ng-click="vm.goToIssue(issue.id)" class="issue-button">See discussion</div>
                 <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
             </div>
@@ -43,7 +43,7 @@
              aria-expanded="false" aria-controls="{{issue.id}}-collapse">
             <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
             <div class="align-right">
-                <div class="issue-votes">Votes: {{issue.votes.length}}</div>
+                <div class="issue-votes">Votes: {{issue.votes.length}} <span ng-show="vm.isAdmin"> from  {{tokenSize(issue.votes)}} tokens</span></div>
                 <div ng-click="vm.goToIssue(issue.id)" class="issue-button">See discussion</div>
                 <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
             </div>
@@ -76,7 +76,7 @@
              aria-expanded="false" aria-controls="{{issue.id}}-collapse">
             <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
             <div class="align-right">
-                <div class="issue-votes">Votes: {{issue.votes.length}}</div>
+                <div class="issue-votes">Votes: {{issue.votes.length}} <span ng-show="vm.isAdmin"> from  {{tokenSize(issue.votes)}} tokens</span></div>
                 <div ng-click="vm.goToIssue(issue.id)" class="issue-button">See discussion</div>
                 <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
             </div>
@@ -102,7 +102,7 @@
              aria-expanded="false" aria-controls="{{issue.id}}-collapse">
             <div class="issue-title"><span>Issue:</span> {{issue.title}}</div>
             <div class="align-right">
-                <div class="issue-votes">Votes: {{issue.votes.length}}</div>
+                <div class="issue-votes">Votes: {{issue.votes.length}} <span ng-show="vm.isAdmin"> from  {{tokenSize(issue.votes)}} tokens</span></div>
                 <div ng-click="vm.goToIssue(issue.id)" class="issue-button">See discussion</div>
                 <div class="issue-arrow"><i class="glyphicon glyphicon-chevron-down"></i></div>
             </div>
