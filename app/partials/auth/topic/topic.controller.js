@@ -18,10 +18,15 @@
         vm.posts = [];
         vm.addPost = addPost;
         vm.tokenSize = tokenSize;
+        vm.backToList = backToList;
 
         function tokenSize(votes) {
             const tokens = new Set(votes);
             return tokens.size;
+        }
+
+        function backToList() {
+            $state.go('TopicList');
         }
 
 

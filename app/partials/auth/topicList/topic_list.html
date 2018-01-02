@@ -3,7 +3,7 @@
     <div ng-click='vm.changeTab("Opened")' ng-class='{"active-tab": vm.activeTab == "Opened"}' class="issue-tab">Active Issues</div>
     <div ng-click='vm.changeTab("WorkInProgress")' ng-class='{"active-tab": vm.activeTab == "WorkInProgress"}' class="issue-tab">Work in Progress Issues</div>
     <div ng-click='vm.changeTab("Resolved")' ng-class='{"active-tab": vm.activeTab == "Resolved"}' class="issue-tab">Resolved Issues</div>
-    <div ng-click='vm.changeTab("WontFix")' ng-class='{"active-tab": vm.activeTab == "WontFix"}' class="issue-tab">Won't Fix Issues</div>
+    <div ng-click='vm.changeTab("WontFix")' ng-class='{"active-tab": vm.activeTab == "WontFix"}' class="issue-tab">Can't Fix Issues</div>
 </div>
 <div ng-show='vm.activeTab == "Opened"' class="issues-accordion" id="openedAccordion" role="tablist" aria-multiselectable="true">
     <div ng-repeat = "issue in vm.openedIssues" class="card">
@@ -19,10 +19,10 @@
         </div>
         <div id="{{issue.id}}-collapse-opened" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading-opened">
             <div class="issue-body card-block">
-                <h4>Admin Options:</h4>
+                <h4 ng-show="vm.isAdmin">Admin Options:</h4>
                 <div class="admin-options" ng-show="vm.isAdmin">
                     <div  ng-click="vm.startWorkingOnIssue(issue)" class="issue-button">Start Working</div>
-                    <div ng-click="vm.wontFixIssue(issue)" class="issue-button">Won't Fix</div>
+                    <div ng-click="vm.wontFixIssue(issue)" class="issue-button">Can't Fix</div>
                 </div>
                 <h4>Created by {{issue.authorId}} on {{issue.creationDate}}</h4>
                 <div class="issue-description">{{issue.description}}</div>
@@ -50,9 +50,9 @@
         </div>
         <div id="{{issue.id}}-collapse-work" class="collapse" role="tabpanel" aria-labelledby="{{issue.id}}-heading-work">
             <div class="issue-body card-block">
-                <h4>Admin Options:</h4>
+                <h4 ng-show="vm.isAdmin">Admin Options:</h4>
                 <div class="admin-options" ng-show="vm.isAdmin">
-                    <div  ng-click="vm.wontFixIssue(issue)" class="issue-button">Won't Fix</div>
+                    <div  ng-click="vm.wontFixIssue(issue)" class="issue-button">Cant't Fix</div>
                     <div  ng-click="vm.resolveIssue(issue)" class="issue-button">Resolve</div>
                 </div>
                 <h4>Created by {{issue.authorId}} on {{issue.creationDate}}</h4>

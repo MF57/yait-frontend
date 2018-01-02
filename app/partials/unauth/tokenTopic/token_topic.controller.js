@@ -11,12 +11,18 @@
         vm.vote = vote;
         vm.loadAll = loadAll;
         vm.canVote = canVote;
+        vm.backToList = backToList;
         vm.issue = {
             votes: []
         };
 
         function canVote() {
             return vm.issue.votes.indexOf($scope.token.id) === -1
+        }
+
+        function backToList() {
+            $state.go('Token', {'tokenId': $stateParams.tokenId})
+
         }
 
         function vote() {

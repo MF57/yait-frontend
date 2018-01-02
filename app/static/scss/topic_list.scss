@@ -5,7 +5,7 @@
   margin-top: 20px;
 }
 
-.new-issue-button {
+.new-issue-button, .back-to-list-button {
   color: white;
   border-radius: 0;
   background-color: $color-jacarta;
@@ -24,6 +24,11 @@
   i {
     margin-right: 5px;
   }
+}
+
+.btn.back-to-list-button {
+  width: 250px;
+  margin-bottom: 20px;
 }
 
 .issue-header {
