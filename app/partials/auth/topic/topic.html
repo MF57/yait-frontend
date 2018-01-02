@@ -1,7 +1,7 @@
 <button ng-click="vm.backToList()" class="btn back-to-list-button"><i class="glyphicon glyphicon-arrow-left"></i>Back To Issue List</button>
 <div class="issue-view-title">{{vm.issue.title}}
     <div class="issue-view-votes">
-        Votes: {{vm.issue.votes.length}}
+        Votes: {{vm.issue.votes.length}} <span class='token-size' ng-show="vm.isAdmin"> from  {{vm.tokenSize()}} tokens</span>
     </div>
 </div>
 <div class="issue-view-description">
@@ -19,6 +19,6 @@
     <textarea ng-hide="vm.hasAlreadyCommented" ng-model="vm.newPost" class="new-post-input"
               placeholder="Your comment"></textarea>
     <button ng-hide="vm.hasAlreadyCommented" ng-click="vm.addPost()" class="btn new-post-button">Add Comment</button>
-    <h3 ng-show="vm.hasAlreadyCommented">You have already commented in this issue</h3>
+    <h3 ng-show="vm.hasAlreadyCommented && vm.loaded">You have already commented in this issue</h3>
 </div>
 

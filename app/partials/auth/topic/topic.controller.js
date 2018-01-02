@@ -12,6 +12,7 @@
         const vm = this;
         vm.issue = {};
         vm.newPost = '';
+        vm.isAdmin = TokenStorage.isAdmin();
         vm.login = TokenStorage.decode(TokenStorage.retrieve()).username;
         vm.userId = TokenStorage.decode(TokenStorage.retrieve()).userId;
         vm.hasAlreadyCommented = true;
@@ -19,9 +20,10 @@
         vm.addPost = addPost;
         vm.tokenSize = tokenSize;
         vm.backToList = backToList;
+        vm.loaded = false;
 
-        function tokenSize(votes) {
-            const tokens = new Set(votes);
+        function tokenSize() {
+            const tokens = new Set(vm.issue.votes);
             return tokens.size;
         }
 
@@ -76,7 +78,7 @@
                     }
                     vm.posts.forEach(post => post.creationDate = DateFormat.formatDate(new Date(post.creationDate)))
 
-
+                    vm.loaded = true;
 
                 }
             }
