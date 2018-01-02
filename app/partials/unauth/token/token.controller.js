@@ -4,8 +4,8 @@
         .module('myApp')
         .controller('TokenCtrl', TokenController);
 
-    TokenController.$inject = ['Token', '$state', '$stateParams', '$scope', 'DateFormat'];
-    function TokenController(Token, $state, $stateParams, $scope, DateFormat) {
+    TokenController.$inject = ['Token', '$state', '$stateParams', '$scope', 'DateFormat', 'ngDialog'];
+    function TokenController(Token, $state, $stateParams, $scope, DateFormat, ngDialog) {
         const vm = this;
         vm.vote = vote;
         vm.canVote = canVote;
@@ -26,12 +26,20 @@
             function successCallback() {
                 issue.votes.push($scope.token.id);
                 $scope.token.votesLeft -= 1;
-                vm.issues.sort((a,b) => b.votes.length - a.votes.length);
+                if ($scope.token.votesLeft === 0) {
+                    votingFinished();
+                }
             }
 
             function failureCallback() {
                 console.log("Error while retrieving data")
             }
+        }
+
+
+
+        function votingFinished() {
+            alert('Voting Finished');
         }
 
         function goToIssue(issueId) {
@@ -44,7 +52,7 @@
 
 
             function successCallback(data) {
-                vm.issues = data.sort((a,b) => b.votes.length - a.votes.length);
+                vm.issues = data.sort((a,b) => a.creationDate - b.creationDate);
                 vm.issues.forEach(issue => {
                     issue.creationDate = DateFormat.formatDate(new Date(issue.creationDate));
                 });

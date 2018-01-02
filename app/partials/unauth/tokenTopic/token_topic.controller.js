@@ -4,9 +4,9 @@
         .module('myApp')
         .controller('TokenTopicCtrl', TokenTopicController);
 
-    TokenTopicController.$inject = ['TokenTopic', '$state', '$stateParams', '$scope', 'DateFormat'];
+    TokenTopicController.$inject = ['TokenTopic', '$state', '$stateParams', '$scope', 'DateFormat', 'ngDialog'];
 
-    function TokenTopicController(TokenTopic, $state, $stateParams, $scope, DateFormat) {
+    function TokenTopicController(TokenTopic, $state, $stateParams, $scope, DateFormat, ngDialog) {
         const vm = this;
         vm.vote = vote;
         vm.loadAll = loadAll;
@@ -31,11 +31,19 @@
             function successCallback(data) {
                 vm.issue.votes.push($scope.token.id);
                 $scope.token.votesLeft -= 1;
+                if ($scope.token.votesLeft === 0) {
+                    votingFinished();
+                }
             }
 
             function failureCallback(error) {
                 console.log("Error while retrieving data")
             }
+        }
+
+
+        function votingFinished() {
+            alert('Voting Finished');
         }
 
         function loadAll() {

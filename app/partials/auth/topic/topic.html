@@ -5,12 +5,12 @@
     </div>
 </div>
 <div class="issue-view-description">
-    <h4>Created by {{vm.issue.authorId}} on {{vm.issue.creationDate}}</h4>
+    <h4>Created by <i class="info-emphasis">{{vm.issue.authorId}}</i> on {{vm.issue.creationDate}}</h4>
     <div class="issue-description">{{vm.issue.description}}</div>
 </div>
 
 <div class="post-badge" ng-repeat="post in vm.posts">
-    <div class="post-header">{{post.authorLogin}} has written on {{post.creationDate}}:</div>
+    <div class="post-header"><i class="info-emphasis">{{post.authorLogin}}</i> has written on {{post.creationDate}}:</div>
     <div class="post-content">{{post.content}}</div>
 </div>
 

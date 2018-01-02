@@ -238,4 +238,14 @@ body {
   letter-spacing: 3px;
 }
 
+.info-emphasis {
+  font-weight: 900;
+}
+
+.post-header .info-emphasis {
+  color: $color-prelude;
+  font-weight: inherit;
+  padding-right: 5px;
+}
+
 

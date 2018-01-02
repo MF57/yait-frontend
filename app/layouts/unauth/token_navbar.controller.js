@@ -4,9 +4,9 @@
         .module('myApp')
         .controller('TokenNavbarController', TokenNavbarController);
 
-    TokenNavbarController.$inject = ['$state', '$stateParams', 'Token', '$scope'];
+    TokenNavbarController.$inject = ['$state', '$stateParams', 'Token', '$scope', 'DateFormat'];
 
-    function TokenNavbarController($state, $stateParams, Token, $scope) {
+    function TokenNavbarController($state, $stateParams, Token, $scope, DateFormat) {
         const vm = this;
         vm.token = {};
         vm.loadAll = loadAll;
@@ -24,6 +24,7 @@
 
             function successCallback(data) {
                 if (typeof data.token !== 'undefined') {
+                    data.validUntil = DateFormat.formatDate(new Date(data.validUntil));
                     vm.token = data;
                     $scope.token = data;
                 } else {
