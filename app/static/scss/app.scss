@@ -22,7 +22,7 @@
   width: 200px;
 }
 body {
-  background-color: #CEB2E2;
+  background-color: rgba(132, 188, 231, 0.31);
   font-family: "Source Sans Pro", 'Open Sans', sans-serif;
 }
 
@@ -58,7 +58,7 @@ body {
 }
 
 #welcome-background:after {
-  background: rgba(109, 73, 150, 0.7) fixed;
+  background: rgba(132, 188, 231, 0.5) fixed;
   position: absolute;
   left: 0;
   right: 0;
@@ -111,7 +111,7 @@ body {
 }
 
 .btn.welcome-button:hover {
-  color: #401732;
+  color: #1a3a7a;
   border-color: white;
   background-color: rgba(255, 255, 255, 0.3);
 }
@@ -142,7 +142,7 @@ body {
 
 
 .ngdialog-theme-default.welcome-dialog .ngdialog-overlay {
-  background-color: rgba(109, 73, 150, 0.95);
+  background-color: rgba(6, 101, 164, 0.95);
 }
 
 .ngdialog-theme-default.welcome-dialog .ngdialog-content {
@@ -161,7 +161,7 @@ body {
 }
 
 .ngdialog-theme-default.welcome-dialog .ngdialog-close:hover:before {
-  color: #401732;
+  color: #1a3a7a;
 }
 
 .welcome-dialog .form-control.welcome-dialog-input {
@@ -169,27 +169,27 @@ body {
   height: 60px;
   border-radius: 0;
   background-color: rgba(141, 97, 150, 0);
-  border: 2px solid #401732;
+  border: 2px solid #1a3a7a;
   color: white;
   letter-spacing: 3px;
 }
 
 
 .welcome-dialog .form-control.welcome-dialog-input::-webkit-input-placeholder {
-  color: #401732;
+  color: #1a3a7a;
   letter-spacing: 3px;
 }
 
 .welcome-dialog .form-control.welcome-dialog-input::-moz-placeholder {
-  color: #401732;
+  color: #1a3a7a;
   letter-spacing: 3px;
 }
 .welcome-dialog .form-control.welcome-dialog-input:-ms-input-placeholder {
-  color: #401732;
+  color: #1a3a7a;
   letter-spacing: 3px;
 }
 .welcome-dialog .form-control.welcome-dialog-input:-moz-placeholder {
-  color: #401732;
+  color: #1a3a7a;
   letter-spacing: 3px;
 }
 .welcome-dialog .form-control.welcome-dialog-input:focus::-webkit-input-placeholder {
@@ -234,7 +234,7 @@ body {
 
 .error-message {
   text-align: center;
-  color: #f8ff13;
+  color: #ff2b4a;
   letter-spacing: 3px;
 }
 

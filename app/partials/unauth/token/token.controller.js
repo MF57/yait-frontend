@@ -27,7 +27,7 @@
                 issue.votes.push($scope.token.id);
                 $scope.token.votesLeft -= 1;
                 if ($scope.token.votesLeft === 0) {
-                    votingFinished();
+                    displayMainMenuPopup(true);
                 }
             }
 
@@ -38,7 +38,7 @@
 
 
 
-        function votingFinished() {
+        function displayMainMenuPopup(votingFinished) {
             alert('Voting Finished');
         }
 
@@ -59,7 +59,7 @@
             }
 
             function failureCallback() {
-                console.log("Error while retrieving data")
+                displayMainMenuPopup(false);
             }
         }
 
