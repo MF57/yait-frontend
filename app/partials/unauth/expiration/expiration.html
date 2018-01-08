@@ -1,0 +1,7 @@
+<div class="new-issue-form input-group login-form">
+    <div class="confirmation-info" ng-hide="vm.finishedVoting">TOKEN EXPIRED - GO TO MAIN MENU</div>
+    <div class="confirmation-info" ng-show="vm.finishedVoting">THANK YOU FOR VOTING - GO TO MAIN MENU</div>
+    <div class="button-wrapper">
+        <button ng-click="vm.confirm()" class="btn welcome-button welcome-dialog-button">OK</button>
+    </div>
+</div>

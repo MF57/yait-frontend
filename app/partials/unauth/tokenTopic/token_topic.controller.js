@@ -37,13 +37,23 @@
             }
 
             function failureCallback(error) {
-                console.log("Error while retrieving data")
+                $state.go('welcome');
             }
         }
 
 
         function displayMainMenuPopup(votingFinished) {
-            alert('Voting Finished');
+            ngDialog.open({
+                controller: "ExpirationCtrl",
+                controllerAs: "vm",
+                template: "partials/unauth/expiration/expiration.html",
+                className: "ngdialog-theme-default welcome-dialog expiration-dialog confirmation-dialog",
+                width: "100%",
+                data: {
+                    'finishedVoting': true
+                }
+            });
+
         }
 
         function loadAll() {
@@ -70,7 +80,6 @@
 
             function failureCallback(error) {
                 console.log("Error while retrieving data");
-                displayMainMenuPopup(false);
             }
         }
 

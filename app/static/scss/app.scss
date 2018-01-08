@@ -145,6 +145,14 @@ body {
   background-color: rgba(6, 101, 164, 0.95);
 }
 
+.ngdialog-theme-default.welcome-dialog.expiration-dialog .ngdialog-overlay {
+  background-color: rgba(6, 101, 164, 1);
+}
+
+.expiration-dialog .ngdialog-close {
+  display: none;
+}
+
 .ngdialog-theme-default.welcome-dialog .ngdialog-content {
   background-color: rgba(0, 0, 0, 0);
   height: 100%;
